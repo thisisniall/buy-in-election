@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203170052) do
+ActiveRecord::Schema.define(version: 20160203214650) do
+
+  create_table "candidates", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "party"
+    t.float    "iowa_average"
+    t.float    "iowa_bid"
+    t.float    "iowa_ask"
+    t.float    "iowa_high"
+    t.float    "iowa_low"
+    t.integer  "twitter_pos"
+    t.integer  "twitter_neg"
+    t.integer  "twitter_tot"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

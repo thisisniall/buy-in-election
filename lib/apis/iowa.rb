@@ -25,6 +25,11 @@ module Iowa
 			return thing['results']['collection1'][1]['candidate']
 		end
 
+		def sand
+			thing = dem
+			return thing['results']['collection1'][2]['candidate']
+		end
+		
 	end
 end
 
