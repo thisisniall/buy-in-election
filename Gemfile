@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+#rest-client is for use with kimono which is how we're scraping the IEM data
+gem 'rest-client'
 #twitter gem for twitter, duh
 gem 'twitter'
 #nokogiri for scraping data from sites
