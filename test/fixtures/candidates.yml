@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  party: 1
+  iowa_average: 1.5
+  iowa_bid: 1.5
+  iowa_ask: 1.5
+  iowa_high: 1.5
+  iowa_low: 1.5
+  twitter_pos: 1
+  twitter_neg: 1
+  twitter_tot: 1
+
+two:
+  name: MyString
+  party: 1
+  iowa_average: 1.5
+  iowa_bid: 1.5
+  iowa_ask: 1.5
+  iowa_high: 1.5
+  iowa_low: 1.5
+  twitter_pos: 1
+  twitter_neg: 1
+  twitter_tot: 1
