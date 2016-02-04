@@ -1,8 +1,25 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<div>
-	<ul>
-		<li><%= @candidate.clin %></li>
-		<li><%= @candidate.sand %></li>
-	</ul>
+<div id = 'page'>
+	<div class = 'party'>
+		<h1>Democrats</h1>
+		<% while @i < @d do %>
+			<div class="candidate">
+				<% @c = @dem[@i].values %>
+				<h2><%= @c[0] %></h2>
+				<p><%= @c[6] %></p>
+			</div>
+			<% @i += 1 %>
+		<% end %>
+	</div>
+	<br>
+	<div class = 'party'>
+		<h1>Republicans</h1>
+		<% while @x < @r do %>
+			<div class = 'candidate'>
+				<% @c = @rep[@x].values %>
+				<h2><%= @c[0] %></h2>
+				<p><%= @c[6] %></p>
+			</div>
+			<% @x += 1 %>
+		<% end %>
+	</div>
 </div>

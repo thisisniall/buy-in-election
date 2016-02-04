@@ -20,21 +20,21 @@ module Iowa
 		  return make_request('bj8hlwos?apikey=tj1hdT1m9XSPUeh1LyEyBn7Q7mC6qIDg')
 		end
 
-		def clin
+		def average(i)
 			thing = dem
-			return thing['results']['collection1'][1]['candidate']
+			return thing['results']['collection1'][i]['average']
 		end
-
-		def sand
-			thing = dem
-			return thing['results']['collection1'][2]['candidate']
-		end
-		
 	end
 end
 
-
-
+# dem = Iowa::Client.new.dem['results']['collection1']
+# rep = Iowa::Client.new.rep['results']['collection1']
+# clinton = dem[1].values
+# sanders = dem[2].values
+# 
+# [0] = candidate name
+# [6] = average
+# 
 # candidate = Iowa::Client.new
 # put candidate.clin => CLIN_NOM
 # put candidate.rep

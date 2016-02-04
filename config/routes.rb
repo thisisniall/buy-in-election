@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post '/log-in' => 'sessions#create'
   get 'log-out' => 'sessions#destroy'
 
+  root 'home#index'
+
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
