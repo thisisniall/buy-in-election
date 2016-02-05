@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: MyString
+  candidate: MyString
+  shares: 1
+  price: 9.99
+  type: 1
+  total_value: 9.99
+
+two:
+  user: MyString
+  candidate: MyString
+  shares: 1
+  price: 9.99
+  type: 1
+  total_value: 9.99
