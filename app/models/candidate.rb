@@ -1,3 +1,3 @@
 class Candidate < ActiveRecord::Base
-	include Crawl
+	has_many :transactions
 end

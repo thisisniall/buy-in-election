@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203214650) do
+ActiveRecord::Schema.define(version: 20160205200441) do
 
   create_table "candidates", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,24 @@ ActiveRecord::Schema.define(version: 20160203214650) do
     t.integer  "twitter_tot"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string   "user"
+    t.integer  "candidate"
+    t.integer  "shares_clinton"
+    t.integer  "shares_sanders"
+    t.integer  "shares_dem_rof"
+    t.integer  "shares_carson"
+    t.integer  "shares_cruz"
+    t.integer  "shares_rubio"
+    t.integer  "shares_trump"
+    t.integer  "shares_rep_rof"
+    t.decimal  "price"
+    t.integer  "type"
+    t.decimal  "total_value"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|
