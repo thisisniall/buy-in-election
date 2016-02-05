@@ -3,11 +3,8 @@ class CreateCandidates < ActiveRecord::Migration
     create_table :candidates do |t|
       t.string :name
       t.integer :party
-      t.float :iowa_average
-      t.float :iowa_bid
-      t.float :iowa_ask
-      t.float :iowa_high
-      t.float :iowa_low
+      t.decimal :iowa_value
+      t.integer :total_shares
       t.integer :twitter_pos
       t.integer :twitter_neg
       t.integer :twitter_tot
