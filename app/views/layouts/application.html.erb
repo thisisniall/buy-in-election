@@ -6,26 +6,12 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body>	
+	<% if !current_user %>
 	<header>
 		<h1 class="title">
-			This will be the title
+			<%= link_to 'Buy-In Election', root_path %>
 		</h1>
-	<% if @current_user %>
-		<nav>
-			<ul>
-				<li>
-					<%= link_to "HOME", root_path %>
-				</li>
-				<li>
-					<%= link_to "ACCOUNT", edit_user_path %>
-				</li>
-				<li>
-					<%= link_to "LOG OUT", log_out_path %>
-				</li>
-			</ul>
-		</nav>
-	<% else %>
 		<nav>
 			<ul>
 				<li>
@@ -36,8 +22,26 @@
 				</li>
 			</ul>
 		</nav>
+	</header>
+	<% else %>
+	<header>
+		<h1 class="title">
+			<%= link_to 'Buy-In Election', root_path %>
+		</h1>
+		<nav>
+			<ul>
+				<li>
+					<%= link_to "HOME", root_path %>
+				</li>
+
+				<li>
+					<%= link_to "LOG OUT", log_out_path %>
+				</li>
+			</ul>
+		</nav>
+	</header>
 	<% end %>
-	</header>	
+		
 
 <%= yield %>
 
