@@ -1,28 +1,28 @@
 <div id = 'page'>
 	<div id="above_the_fold">
-		<div class="splash_image">
+		<div class="dsplash_image">
 			<img src="assets/dems.png">
 		</div>
-		<div class="user_graph">
+		<div class="duser_graph">
 			<img src="assets/DCONV16_graph.png" />
 		</div>
-		<div class="spash_image">
+		<div class="ruser_graph">
+			<img src="assets/RCONV16_graph.png" />
 		</div>
-		<div class="user_graph">
+		<div class="rsplash_image">
+			<img src="assets/reps.jpg" />
 		</div>
 	</div>
-
-
 	<div class='party dparty'>
-		<h1>Democrats</h1>
+		<h1 class="larger_text">Democrats</h1>
 		<% while @i < @dem_array_length do %>
 			<div class="dcandidate">
 				<% @c = @dem[@i].values %>
 				<% if @c[0] == 'CLIN_NOM' %>
-					<h2>Hillary Clinton</h2>
+					<h1>Hillary Clinton</h1>
 					<img src="assets/clinton.jpg" class="candidate_img" />
 				<% else %>
-					<h2>Bernie Sanders</h2>
+					<h1>Bernie Sanders</h1>
 					<img src="assets/sanders.jpg" class="candidate_img" />
 				<% end %>
 				<h2><%= @c[0] %></h2>
@@ -33,21 +33,21 @@
 	</div>
 	<br>
 	<div class='party rparty'>
-		<h1>Republicans</h1>
+		<h1 class="larger_text">Republicans</h1>
 		<% while @x < @rep_array_length do %>
 			<div class = 'candidate'>
 				<% @c = @rep[@x].values %>
 				<% if @c[0] == 'CARS_NOM' %>
-					<h2>Ben Carson</h2>
+					<h1>Ben Carson</h1>
 					<img src="assets/carson.jpg" class="candidate_img" />
 				<% elsif @c[0] == 'CRUZ_NOM' %>
-					<h2>Ted Cruz</h2>
+					<h1>Ted Cruz</h1>
 					<img src="assets/cruz.jpg" class="candidate_img" />
 				<% elsif @c[0] == 'RUBI_NOM' %>
-					<h2>Marco Rubio</h2>
+					<h1>Marco Rubio</h1>
 					<img src="assets/rubio.jpg" class="candidate_img" />
 				<% else %>
-					<h2>Donald Trump</h2>
+					<h1>Donald Trump</h1>
 					<img src="assets/trump.jpg" class="candidate_img" />
 				<% end %>
 				<h2><%= @c[0] %></h2>
@@ -56,6 +56,8 @@
 			<% @x += 1 %>
 		<% end %>
 	</div>
+
+
 
 	
 </div>

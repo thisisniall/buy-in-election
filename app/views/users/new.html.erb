@@ -1,2 +1,30 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div id="page">
+
+	<div id="sign_up">
+		<h1 class="skinny">Sign Up</h1>
+		<%= form_for @user do |f| %>
+			<%= f.label :fname %>
+			<%= f.text_field :fname, :class => "user_input" %>
+			<br>
+			<br>
+			<%= f.label :lname %>
+			<%= f.text_field :lname, :class => "user_input" %>
+			<br>
+			<br>
+			<%= f.label :email %>
+			<%= f.text_field :email, :class => "user_input"%>
+			<br>
+			<br>
+			<%= f.label :password %>
+			<%= f.password_field :password, :class => "user_input"%>
+			<br>
+			<br>
+			<%= f.label :password_confirmation %>
+			<%= f.password_field :password_confirmation, :class => "user_input"%>
+			<br>
+			<br>
+			<%= f.submit :class => "user_input"%>
+		<% end %>
+	</div>
+
+</div>
