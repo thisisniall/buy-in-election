@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@parties = ['Democrat', 'Republican']
 		@user = User.new(user_params)
 		if @user.save
 			session[:user_id] = @user.id
@@ -45,7 +44,7 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-    	params.require(:user).permit(:email, :password, :fname, :party, :lname)
+    	params.require(:user).permit(:email, :password, :fname, :lname, :party, :money, :shares_clinton, :shares_sanders, :shares_dem_rof, :shares_carson, :shares_cruz, :shares_rubio, :shares_trump, :shares_rep_rof)
   	end
 
 end

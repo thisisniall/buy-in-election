@@ -20,9 +20,22 @@
 			<br>
 			<br>
 			<%= f.label :password_confirmation %>
-			<%= f.password_field :password_confirmation, :class => "user_input"%>
+			<%= f.password_field :password_confirmation, :class => "user_input" %>
 			<br>
 			<br>
+			<%= f.label :party %>
+			<%= f.select :party, { "Democrat" => 0, "Republican" => 1 }, { :prompt => "Select a Party"}, :class => "user_input" %>
+			<br>
+			<br>
+			<%= f.hidden_field :money, :value => 500.00 %>
+			<%= f.hidden_field :shares_clinton, :value => 0 %>
+			<%= f.hidden_field :shares_sanders, :value => 0 %>
+			<%= f.hidden_field :shares_dem_rof, :value => 0 %>
+			<%= f.hidden_field :shares_carson, :value => 0 %>
+			<%= f.hidden_field :shares_cruz, :value => 0 %>
+			<%= f.hidden_field :shares_rubio, :value => 0 %>
+			<%= f.hidden_field :shares_trump, :value => 0 %>
+			<%= f.hidden_field :shares_rep_rof, :value => 0 %>
 			<%= f.submit :class => "user_input"%>
 		<% end %>
 	</div>
