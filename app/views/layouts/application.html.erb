@@ -7,8 +7,41 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+		<h1 class="title">
+			This will be the title
+		</h1>
+	<% if @current_user %>
+		<nav>
+			<ul>
+				<li>
+					<%= link_to "HOME", root_path %>
+				</li>
+				<li>
+					<%= link_to "ACCOUNT", edit_user_path %>
+				</li>
+				<li>
+					<%= link_to "LOG OUT", log_out_path %>
+				</li>
+			</ul>
+		</nav>
+	<% else %>
+		<nav>
+			<ul>
+				<li>
+					<%= link_to "LOG IN", log_in_path %>
+				</li>
+				<li>
+					<%= link_to "SIGN UP", new_user_path %>
+				</li>
+			</ul>
+		</nav>
+	<% end %>
+	</header>	
 
 <%= yield %>
 
+	<footer>
+	</footer>
 </body>
 </html>

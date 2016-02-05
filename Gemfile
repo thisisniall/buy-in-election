@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+
+gem 'whenever', :require => false
 #rest-client is for use with kimono which is how we're scraping the IEM data
 gem 'rest-client'
 #twitter gem for twitter, duh

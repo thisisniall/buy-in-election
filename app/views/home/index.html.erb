@@ -1,25 +1,61 @@
 <div id = 'page'>
-	<div class = 'party'>
+	<div id="above_the_fold">
+		<div class="splash_image">
+			<img src="assets/dems.png">
+		</div>
+		<div class="user_graph">
+			<img src="assets/DCONV16_graph.png" />
+		</div>
+		<div class="spash_image">
+		</div>
+		<div class="user_graph">
+		</div>
+	</div>
+
+
+	<div class='party dparty'>
 		<h1>Democrats</h1>
-		<% while @i < @d do %>
-			<div class="candidate">
+		<% while @i < @dem_array_length do %>
+			<div class="dcandidate">
 				<% @c = @dem[@i].values %>
+				<% if @c[0] == 'CLIN_NOM' %>
+					<h2>Hillary Clinton</h2>
+					<img src="assets/clinton.jpg" class="candidate_img" />
+				<% else %>
+					<h2>Bernie Sanders</h2>
+					<img src="assets/sanders.jpg" class="candidate_img" />
+				<% end %>
 				<h2><%= @c[0] %></h2>
-				<p><%= @c[6] %></p>
+				<p>average: <%= @c[6] %></p>
 			</div>
 			<% @i += 1 %>
 		<% end %>
 	</div>
 	<br>
-	<div class = 'party'>
+	<div class='party rparty'>
 		<h1>Republicans</h1>
-		<% while @x < @r do %>
+		<% while @x < @rep_array_length do %>
 			<div class = 'candidate'>
 				<% @c = @rep[@x].values %>
+				<% if @c[0] == 'CARS_NOM' %>
+					<h2>Ben Carson</h2>
+					<img src="assets/carson.jpg" class="candidate_img" />
+				<% elsif @c[0] == 'CRUZ_NOM' %>
+					<h2>Ted Cruz</h2>
+					<img src="assets/cruz.jpg" class="candidate_img" />
+				<% elsif @c[0] == 'RUBI_NOM' %>
+					<h2>Marco Rubio</h2>
+					<img src="assets/rubio.jpg" class="candidate_img" />
+				<% else %>
+					<h2>Donald Trump</h2>
+					<img src="assets/trump.jpg" class="candidate_img" />
+				<% end %>
 				<h2><%= @c[0] %></h2>
-				<p><%= @c[6] %></p>
+				<p>average: <%= @c[6] %></p>
 			</div>
 			<% @x += 1 %>
 		<% end %>
 	</div>
+
+	
 </div>
