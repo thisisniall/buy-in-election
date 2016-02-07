@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// new user page
+
 #sign_up {
 	width: 33%;
 	margin-top: 20vh;
@@ -12,5 +14,76 @@
 		font-size: 20px;
 		font-weight: 300;
 		
+	}
+}
+
+
+
+// edit user page
+
+#edit {
+	width: 80%;
+	height: 700px;
+	margin: 0 auto;
+
+	h1 {
+		text-align: center;
+	}
+
+	.red {
+		color: red;
+	}
+
+	.green {
+		color: green;
+	}
+
+	#account_settings {
+		width: 33%;
+		min-width: 390px;
+		height: 600px;
+		float: left;
+		border: 1px solid;
+		padding: 10px;
+
+		h2 {
+
+		}
+
+		form label {
+		
+		}
+
+	}
+
+	#user_stocks {
+		width: 60%;
+		height: 300px;
+		float: right;
+		border: 1px solid;
+		padding: 10px;
+
+		h2 {
+			margin: 0 auto;
+		}
+
+	}
+
+	#user_graph {
+		width: 60%;
+		height: 300px;
+		float: right; 
+		border: 1px solid;
+		padding: 10px;
+		margin-top: 20px;
+
+		.ugraph {
+			margin-top: 4.5%;
+			width: 90%;
+			height: 80%;
+			margin-left: auto;
+			margin-right: auto;
+			background-color: rgba(0, 0, 0, 0.1);
+		}
 	}
 }

@@ -1,2 +1,51 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div id="page">
+	<div id ="edit">
+		<h1 class="skinny"><%= @user.fname + " " + @user.lname + "'s account" %></h1>
+		<div id="account_settings">
+			<h2 class="skinny">Account Settings</h2>
+			<%= form_for @user do |f| %>
+				<%= f.label :fname %>
+				<%= f.text_field :fname, :class => "user_input" %>
+				<br>
+				<br>
+				<%= f.label :lname %>
+				<%= f.text_field :lname, :class => "user_input" %>
+				<br>
+				<br>
+				<%= f.label :email %>
+				<%= f.text_field :email, :class => "user_input"%>
+				<br>
+				<br>
+				<%= f.label :password %>
+				<%= f.password_field :password, :class => "user_input"%>
+				<br>
+				<br>
+				<%= f.label :password_confirmation %>
+				<%= f.password_field :password_confirmation, :class => "user_input"%>
+				<br>
+				<br>
+				<%= f.label :party %>
+				<%= f.select :party, { "Democrat" => 0, "Republican" => 1 }, { :prompt => "Select a Party"}, :class => "user_input" %>
+				<br>
+				<br>
+				<%= f.submit "Update Account", :class => "user_input" %>
+			<% end %>
+			<br>
+			<h3 class="skinny">Current Money</h3>
+			<% if @user.money > 500.00 %>
+				<p class="green">$<%= @user.money %></p>
+			<% elsif @user.money < 500.00 %>
+				<p class="red">$<%= @user.money %></p>
+			<% else %>
+				<p>$<%= @user.money %></p>
+			<% end %>
+		</div>
+		<div id ="user_stocks">
+			<h2 class="skinny">Stocks</h2>
+		</div>
+		<div id="user_graph">
+			<div class="ugraph">
+			</div>
+		</div>
+	</div>
+</div>

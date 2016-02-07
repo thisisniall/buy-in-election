@@ -23,8 +23,10 @@ body {
 
 header {
 	width: 100%;
-	height: 75px;
+	height: 50px;
 }
+
+
 
 .user_input {
 	float: right;
@@ -43,8 +45,15 @@ header {
 .title {
 	width: 30%;
 	float: left;
-	margin-bottom: 15px;
+	font-weight: 300;
+	/*font-size: 35px;*/
+	margin-bottom: 0;
 	margin-left: 20px;
+}
+
+.title a {
+	font-size: 30px;
+
 }
 
 nav {
