@@ -1,2 +1,25 @@
-<h1>Users#view</h1>
-<p>Find me in app/views/users/view.html.erb</p>
+<div id="page">
+	<div id ="edit">
+		<h1 class="skinny"><%= @user.fname + " " + @user.lname + "'s account" %></h1>
+		<div id="account_settings">
+			<h2 class="skinny">Account Settings</h2>
+			<%= render partial: 'edit', local: {user: @user} %>
+			<br>
+			<h3 class="skinny">Current Money</h3>
+			<% if @user.money > 500.00 %>
+				<p class="green">$<%= @user.money %></p>
+			<% elsif @user.money < 500.00 %>
+				<p class="red">$<%= @user.money %></p>
+			<% else %>
+				<p>$<%= @user.money %></p>
+			<% end %>
+		</div>
+		<div id ="user_stocks">
+			<h2 class="skinny">Stocks</h2>
+		</div>
+		<div id="user_graph">
+			<div class="ugraph">
+			</div>
+		</div>
+	</div>
+</div>

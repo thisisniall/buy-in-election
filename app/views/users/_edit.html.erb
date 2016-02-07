@@ -1,0 +1,27 @@
+<%= form_for @user do |f| %>
+	<%= f.label :fname %>
+	<%= f.text_field :fname, :class => "user_input" %>
+	<br>
+	<br>
+	<%= f.label :lname %>
+	<%= f.text_field :lname, :class => "user_input" %>
+	<br>
+	<br>
+	<%= f.label :email %>
+	<%= f.text_field :email, :class => "user_input"%>
+	<br>
+	<br>
+	<%= f.label :password %>
+	<%= f.password_field :password, :class => "user_input"%>
+	<br>
+	<br>
+	<%= f.label :password_confirmation %>
+	<%= f.password_field :password_confirmation, :class => "user_input"%>
+	<br>
+	<br>
+	<%= f.label :party %>
+	<%= f.select :party, { "Democrat" => 0, "Republican" => 1 }, { :prompt => "Select a Party"}, :class => "user_input" %>
+	<br>
+	<br>
+	<%= f.submit "Update Account", :class => "user_input" %>
+<% end %>
