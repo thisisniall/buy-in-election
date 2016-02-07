@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20160205200441) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.integer  "user"
-    t.integer  "candidate"
+    t.integer  "user_id"
+    t.integer  "candidate_id"
     t.integer  "shares_clinton"
     t.integer  "shares_sanders"
     t.integer  "shares_dem_rof"
