@@ -3,6 +3,7 @@
 <head>
   <title>GroupProject</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -33,7 +34,9 @@
 				<li>
 					<%= link_to "HOME", root_path %>
 				</li>
-
+				<li>
+					<%= link_to "ACCOUNT", user_path(@user) %>
+				</li>
 				<li>
 					<%= link_to "LOG OUT", log_out_path %>
 				</li>
