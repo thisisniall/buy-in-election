@@ -1,0 +1,40 @@
+// Place all the styles related to the candidates controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$blue: #77BED2;
+$red: #F2583E;
+$white: #F7F3E8;
+$grey: #D5E1DD;
+$dark_grey: #747E80;
+$black_blue: #2B3E42;
+
+#candidate_page {
+	width: 40%;
+	margin: 0 auto;
+	text-align: center;
+	color: #ffffff;
+	margin-top: 50px;
+}
+
+.candidate_img {
+	width: 300px;
+	padding: 5px;
+	background-color: #F7F3E8;
+	border-radius: 50%;
+}
+
+#dem_candidate {
+	background-color: $blue;
+	height: 100%;
+	width: 100%;
+	padding: 20px;
+	border-radius: 10%;
+}
+
+#rep_candidate {
+	background-color: $red;
+	height: 100%;
+	width: 100%;
+	padding: 20px;
+	border-radius: 10%;
+}

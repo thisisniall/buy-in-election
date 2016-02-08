@@ -1,0 +1,37 @@
+<div id="page">
+	<div id="candidate_page">
+		<% if @candidate.party == 0 %>
+			<div id="dem_candidate">
+				<h1 class="skinny"><%= @candidate.name %></h1>
+				<% if @candidate.name == 'Hillary Clinton' %>
+					<img src="/assets/clinton.jpg" class="candidate_img" />
+				<% else %>
+					<img src="/assets/sanders.jpg" class="candidate_img" />
+				<% end %>
+				<p><span class="bold">Ticker name:</span> <%= @dem[@candidate.id]["candidate"] %></p>
+				<p><span class="bold">Low:</span> <%= @dem[@candidate.id]['low'] %></p>
+				<p><span class="bold">High:</span> <%= @dem[@candidate.id]['high'] %></p>
+				<p><span class="bold">Average:</span> <%= @dem[@candidate.id]['average'] %></p>
+				<p><span class="bold">Hash:</span> <%= @dem[@candidate.id] %></p>
+			</div>
+		<% else %>
+			<div id="rep_candidate">
+				<h1 class="skinny"><%= @candidate.name %></h1>
+				<% if @candidate.name == "Ben Carson" %>
+					<img src="/assets/carson.jpg" class="candidate_img" />
+				<% elsif @candidate == 'Ted Cruz' %>
+					<img src="/assets/cruz.jpg" class="candidate_img" />
+				<% elsif @candidate == 'Marco Rubio' %>
+					<img src="/assets/rubio.jpg" class="candidate_img" />
+				<% else %>
+					<img src="/assets/trump.jpg" class="candidate_img" />
+				<% end %>
+				<p>Ticker name: <%= @rep[@candidate.id]["candidate"] %></p>
+				<p>Low: <%= @rep[@candidate.id]['low'] %></p>
+				<p>High: <%= @rep[@candidate.id]['high'] %></p>
+				<p>Average: <%= @rep[@candidate.id]['average'] %></p>
+				<p>Hash: <%= @rep[@candidate.id] %></p>
+			</div>
+		<% end %>
+	</div>
+</div>

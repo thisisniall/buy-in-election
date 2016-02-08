@@ -26,12 +26,22 @@ header {
 	height: 50px;
 }
 
+.subtitle {
+	font-size: 20px;
+	font-weight: 500;
+}
 
+.skinny_subtitle {
+	margin-top: 0px;
+	font-size: 26px;
+	font-weight: 300;
+}
 
 .user_input {
 	float: right;
 	font-size: 18px;
 	padding: 3px;
+	border: 1px solid #ffffff;
 }
 
 .larger_text {
@@ -53,7 +63,28 @@ header {
 
 .title a {
 	font-size: 30px;
+}
 
+.bottom_space {
+	padding-bottom: 5px;
+}
+
+.button {
+	border: 1px solid #ffffff;
+	background-color: #ffffff;
+	padding: 5px;
+	clear: both;
+}
+
+.drop_down {
+	border: 1px solid #ffffff;
+	background-color: #ffffff;
+	padding: 5px;
+}
+
+.bold {
+	font-weight: 500;
+	font-size: 18px;
 }
 
 nav {

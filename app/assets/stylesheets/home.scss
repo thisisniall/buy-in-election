@@ -1,13 +1,27 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//variables
+$blue: #77BED2;
+$red: #F2583E;
+$white: #F7F3E8;
+$grey: #D5E1DD;
+$dark_grey: #747E80;
+$black_blue: #2B3E42;
+
 
 #page {
 	width: 100%;
 }
 
+.cand_name {
+	color: #ffffff;
+	font-size: 32px;
+}
+
 #above_the_fold {
 	width: 100%;
+
 
 
 	.dsplash_image {
@@ -88,6 +102,10 @@
 	
 }
 
+.clear {
+
+}
+
 .party {
 	width: 90%;
 	margin: 0 auto;
@@ -112,7 +130,7 @@
 		width: 30%;
 		padding: 20px;
 		display: inline-block;
-		background-color: #77BED2;
+		background-color: $blue;
 		border-radius: 10%;
 		margin: 5px;
 		color: #ffffff;
@@ -132,7 +150,7 @@
 		padding: 20px;
 		margin: 5px;
 		display: inline-block;
-		background-color: #F2583E;
+		background-color: $red;
 		border-radius: 10%;
 		color: #ffffff;
 		font-weight: 300;

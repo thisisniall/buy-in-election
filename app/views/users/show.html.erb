@@ -5,17 +5,34 @@
 			<h2 class="skinny">Account Settings</h2>
 			<%= render partial: 'edit', local: {user: @user} %>
 			<br>
-			<h3 class="skinny">Current Money</h3>
+			<br>
+			<h3 class="skinny subtitle">Current Money</h3>
 			<% if @user.money > 500.00 %>
-				<p class="green">$<%= @user.money %></p>
+				<p class="green bold">$<%= @user.money %></p>
+				<p class="green bold">UP <%= @user.money - 500.00 %><i class="fa fa-arrow-up"></i></p>
 			<% elsif @user.money < 500.00 %>
-				<p class="red">$<%= @user.money %></p>
+				<p class="red bold">$<%= @user.money %></p>
+				<p class="red bold">DOWN <%= @user.money - 500.00 %><i class="fa fa-arrow-down"></i></p>
 			<% else %>
-				<p>$<%= @user.money %></p>
+				<p class="bold">$<%= @user.money %></p>
 			<% end %>
 		</div>
-		<div id ="user_stocks">
-			<h2 class="skinny">Stocks</h2>
+		<div id="user_stocks">
+			<h2 class="skinny bottom_space">Stocks</h2>
+			<div id="dems">
+				<p class="skinny_subtitle center">Democrats</p>
+				<p>Clinton: <%= @user.shares_clinton %></p>
+				<p>Sanders: <%= @user.shares_sanders %></p>
+				<p>Rest of Field: <%= @user.shares_dem_rof %></p>
+			</div>
+			<div id="reps">
+				<p class="skinny_subtitle center">Republicans</p>
+				<p>Carson: <%= @user.shares_carson %></p>
+				<p>Cruz: <%= @user.shares_cruz %></p>
+				<p>Rubio: <%= @user.shares_rubio %></p>
+				<p>Trump: <%= @user.shares_trump %></p>
+				<P>Rest of Feild: <%= @user.shares_rep_rof %></p>
+			</div>
 		</div>
 		<div id="user_graph">
 			<div class="ugraph">
