@@ -6,10 +6,24 @@
 		
 		<br>
 		<br>
-		<%= t.select :type, {"Buy" => 0, "Sell" => 1}, {:prompt => "Select a type of transaction"}, {:class => "user_input" }%>
+		<%= t.select :buysell, {"Buy" => 0, "Sell" => 1}, {:prompt => "Select a type of transaction"}, {:class => "user_input" }%>
 		<br>
 		<br>
-		
+		<%= t.hidden_field :shares_clinton, :value => nil %>
+		<%= t.hidden_field :shares_sanders, :value => nil %>
+		<%= t.hidden_field :shares_dem_rof, :value => nil %>
+		<%= t.hidden_field :shares_carson, :value => nil %>
+		<%= t.hidden_field :shares_cruz, :value => nil %>
+		<%= t.hidden_field :shares_rubio, :value => nil %>
+		<%= t.hidden_field :shares_trump, :value => nil %>
+		<%= t.hidden_field :shares_rep_rof, :value => nil %>
+
+		<!-- value 1 is hillary -->
+		<% if :candidate_id.value = 1 %>
+			<%= t.number_fiel:shares_clinton 
+		<% end %>
+		<br>
+		<br>
 		<%= t.submit :class => "button user_input"%>
 	<% end %>
 

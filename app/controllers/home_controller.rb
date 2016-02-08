@@ -27,10 +27,6 @@ class HomeController < ApplicationController
   	# @dem_old_data = Iowa::Client.new.old_data['results']['collection1']
   	# @rep_old_data = Iowa::Client.new.old_data(y, rep_api_url)['results']['collection1']
 
-  	# def list
-  	# 	@dem_data = DemData.new('https://iemweb.biz.uiowa.edu/quotes/365.html')
-  	# 	@data = @dem_data.get_data(td)
-  	# end
   end
 end
 

@@ -1,0 +1,27 @@
+<div class="transaction">
+	<div class="transaction">
+		<%= form_for @transaction do |t| %>
+			<%= t.hidden_field :user_id, :value => @user.id %>
+			<%= "Bernie Sanders" %>
+			<!-- value 2 is bernie -->
+			<%= t.hidden_field :candidate_id, :value => 2 %>
+			
+			<br>
+			<br>
+			<p>Price:</p><p><%= @dem[2]["average"] %></p>
+			<%= t.hidden_field :price, :value => @dem[2]["average"] %>
+			<%= t.select :buysell, {"Buy" => 0, "Sell" => 1}, {:prompt => "Select a type of transaction"}, {:class => "user_input" }%>
+			<br>
+			<br>
+			<%= t.label :shares_sanders %>
+			<%= t.number_field :shares_sanders%>
+			<br>
+			<br>
+			<!-- insert javascript for total value of transaction display here -->
+			<%= t.submit :class => "button user_input"%>
+		<% end %>
+
+	</div>
+
+
+</div>

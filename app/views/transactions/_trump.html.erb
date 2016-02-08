@@ -1,0 +1,26 @@
+	<div class="transaction">
+		<%= form_for @transaction do |t| %>
+			<%= t.hidden_field :user_id, :value => @user.id %>
+			<%= "Donald Trump" %>
+			<!-- value 4 is donald trump-->
+			<%= t.hidden_field :candidate_id, :value => 4 %>
+			
+			<br>
+			<br>
+			<p>Price:</p><p><%= @rep[4]["average"] %></p>
+			<%= t.hidden_field :price, :value => @rep[4]["average"] %>
+			<%= t.select :buysell, {"Buy" => 0, "Sell" => 1}, {:prompt => "Select a type of transaction"}, {:class => "user_input" }%>
+			<br>
+			<br>
+			<%= t.label :shares_trump %>
+			<%= t.number_field :shares_trump%>
+			<br>
+			<br>
+
+			<%= t.submit :class => "button user_input"%>
+		<% end %>
+
+	</div>
+
+
+</div>
