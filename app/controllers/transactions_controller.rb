@@ -46,7 +46,9 @@ class TransactionsController < ApplicationController
 				@user.share_type_selection_method = @user.share_type_selection_method + transaction.share_type_selection_method
 				@user.save
 				# update candidate share counts
-
+				@candidate.shares = @candidate.shares + @transaction.share_type_selection_method
+				@candidate.price = @transaction.price
+				@candidate.save
 			# else dissapprove and alert them to the error
 			else
 ​				flash[:alert] = "You do not have enough money to pay for this transaction."
@@ -61,7 +63,9 @@ class TransactionsController < ApplicationController
 				@user.share_type_selection_method = @user.share_type_selection_method - @transaction.share_type_selection_method
 				@user.save
 				# update candidate share counts, price, money
-
+				@candidate.shares = @candidate.shares - @transaction.share_type_selection_method
+				@candidate.price = @transaction.price
+				@candidate.save
 			# else disapprove and alert them to the error
 			else
 				flash[:alert] = "You do not have enough shares to sell!"
