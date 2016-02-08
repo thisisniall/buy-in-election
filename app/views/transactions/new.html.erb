@@ -1,0 +1,28 @@
+<div class="transaction">
+	<%= form_for @transaction do |t| %>
+		<%= t.hidden_field :user_id, :value => @user.id %>
+		<%= t.label :candidate_id %>
+		<%= t.collection_select :candidate_id, @candidates, :id, :name, :prompt => "Select a Candidate" %>
+		
+		<br>
+		<br>
+		<%= t.select :type, {"Buy" => 0, "Sell" => 1}, {:prompt => "Select a type of transaction"}, {:class => "user_input" }%>
+		<br>
+		<br>
+		
+		<%= t.submit :class => "button user_input"%>
+	<% end %>
+
+
+
+
+
+</div>
+
+<!-- if shares_clinton != nil
+	transaction.candidate=Candidate.find_by(name:"Hillary Clinton")
+elsif shares_sanders != nil 
+transaction.candidate=Candidate.find_by(name:"Bernie Sanders")
+#etc
+end
+ -->
