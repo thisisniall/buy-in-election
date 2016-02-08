@@ -63,7 +63,9 @@ class TransactionsController < ApplicationController
 				@user.share_type_selection_method = @user.share_type_selection_method + transaction.share_type_selection_method
 				@user.save
 				# update candidate share counts
-
+				@candidate.shares = @candidate.shares + @transaction.share_type_selection_method
+				@candidate.price = @transaction.price
+				@candidate.save
 			# else dissapprove and alert them to the error
 			else
 ​				flash[:alert] = "You do not have enough money to pay for this transaction."
@@ -77,13 +79,21 @@ class TransactionsController < ApplicationController
 				@user.money = @user.money + @transaction.total_value 
 				@user.share_type_selection_method = @user.share_type_selection_method - @transaction.share_type_selection_method
 				@user.save
-				# update candidate share counts
+				# update candidate share counts, price, money
+				@candidate.shares = @candidate.shares - @transaction.share_type_selection_method
+				@candidate.price = @transaction.price
+				@candidate.save
 			# else disapprove and alert them to the error
 			else
 				flash[:alert] = "You do not have enough shares to sell!"
 			end
 		end
 ​
+	end
+
+	private
+	def transaction_params
+		params.require(:user).permit(:user, :candidate, :price, :type, :total_value, :shares_clinton, :shares_sanders, :shares_dem_rof, :shares_carson, :shares_cruz, :shares_rubio, :shares_trump, :shares_rep_rof)
 	end
 ​
 end
