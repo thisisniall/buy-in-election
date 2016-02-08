@@ -2,7 +2,9 @@ class TransactionsController < ApplicationController
 
 #notable variables:
 # share_type_selection_method is a variable that will select the appropriate candidate from the users and table and relate them to the correct shares string - on rubio's page, share_type_selection_method will be the user-relationship to rubio
+# type 0 is buy, type 1 is sell
 # @user = current user is implicit for this logic to work, else horrible things
+
 ​
 	def create
 		@transaction = Transaction.new(transaction_params)
@@ -24,7 +26,7 @@ class TransactionsController < ApplicationController
 			@candidate = Candidate.find_by(name: "Ted Cruz")	
 		elsif @transaction.param[:shares_rubio] != nil
 			share_type_selection_method = 'shares_rubio'
-			@candidate = Candidate.find_by(name: "Marco Rubio")					
+			@candidate = Candidate.find_by(name: "Marco Rubio")	
 		elsif @transaction.param[:shares_trump] != nil
 			share_type_selection_method = 'shares_trump'
 			@candidate = Candidate.find_by(name: "Donald Trump")
