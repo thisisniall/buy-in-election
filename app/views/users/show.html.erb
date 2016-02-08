@@ -14,8 +14,22 @@
 				<p>$<%= @user.money %></p>
 			<% end %>
 		</div>
-		<div id ="user_stocks">
+		<div id="user_stocks">
 			<h2 class="skinny">Stocks</h2>
+			<div id="dems">
+				<p class="subtitle">Democrats</p>
+				<p>Clinton <%= @user.shares_clinton %></p>
+				<p>Sanders <%= @user.shares_sanders %></p>
+				<p>Rest of Field <%= @user.shares_dem_rof %></p>
+			</div>
+			<div id="reps">
+				<p class="subtitle">Republicans</p>
+				<p>Carson <%= @user.shares_carson %></p>
+				<p>Cruz <%= @user.shares_cruz %></p>
+				<p>Rubio <%= @user.shares_rubio %></p>
+				<p>Trump <%= @user.shares_trump %></p>
+				<P>Rest of Feild <%= @user.shares_rep_rof %></p>
+			</div>
 		</div>
 		<div id="user_graph">
 			<div class="ugraph">

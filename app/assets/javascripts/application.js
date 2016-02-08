@@ -14,3 +14,23 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).ready(function(){
+
+	$('.link').hover(function(){
+		$(this).css({
+			'color': '#F2583E',
+			'border-bottom': '3px solid',
+			});
+		}, function(){
+			$('.link').css({
+				'color': '#000000',
+				'border-bottom': '0px',
+			});
+		}
+	);
+	
+
+
+});
