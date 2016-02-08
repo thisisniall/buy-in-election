@@ -1,8 +1,8 @@
 class CreateTransactions < ActiveRecord::Migration
   def change
     create_table :transactions do |t|
-      t.integer :user
-      t.integer :candidate
+      t.references :user, index: true, foreign_key: true
+      t.references :candidate, index: true, foreign_key: true
       t.integer :shares_clinton
       t.integer :shares_sanders
       t.integer :shares_dem_rof

@@ -16,11 +16,8 @@ ActiveRecord::Schema.define(version: 20160205200441) do
   create_table "candidates", force: :cascade do |t|
     t.string   "name"
     t.integer  "party"
-    t.float    "iowa_average"
-    t.float    "iowa_bid"
-    t.float    "iowa_ask"
-    t.float    "iowa_high"
-    t.float    "iowa_low"
+    t.decimal  "iowa_value"
+    t.integer  "total_shares"
     t.integer  "twitter_pos"
     t.integer  "twitter_neg"
     t.integer  "twitter_tot"
@@ -29,8 +26,8 @@ ActiveRecord::Schema.define(version: 20160205200441) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.integer  "user"
-    t.integer  "candidate"
+    t.integer  "user_id"
+    t.integer  "candidate_id"
     t.integer  "shares_clinton"
     t.integer  "shares_sanders"
     t.integer  "shares_dem_rof"
@@ -46,11 +43,23 @@ ActiveRecord::Schema.define(version: 20160205200441) do
     t.datetime "updated_at",     null: false
   end
 
+  add_index "transactions", ["candidate_id"], name: "index_transactions_on_candidate_id"
+  add_index "transactions", ["user_id"], name: "index_transactions_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "fname"
     t.string   "lname"
     t.integer  "party"
+    t.decimal  "money"
+    t.integer  "shares_clinton"
+    t.integer  "shares_sanders"
+    t.integer  "shares_dem_rof"
+    t.integer  "shares_carson"
+    t.integer  "shares_cruz"
+    t.integer  "shares_rubio"
+    t.integer  "shares_trump"
+    t.integer  "shares_rep_rof"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
