@@ -4,7 +4,24 @@ class TransactionsController < ApplicationController
 # share_type_selection_method is a variable that will select the appropriate candidate from the users and table and relate them to the correct shares string - on rubio's page, share_type_selection_method will be the user-relationship to rubio
 # type 0 is buy, type 1 is sell
 # @user = current user is implicit for this logic to work, else horrible things
+	def new
+		@transaction = Transaction.new
+	end
 
+	def _buy
+		@transaction = Transaction.new(transaction_params)
+		type = 0
+	end
+
+	def _sell
+		@transaction = Transaction.new(transaction_params)
+		type = 1
+	end
+
+	def index
+		@transactions = Transaction.all
+
+	end
 ​
 	def create
 		@transaction = Transaction.new(transaction_params)

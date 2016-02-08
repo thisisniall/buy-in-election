@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   post '/log-in' => 'sessions#create'
   get 'log-out' => 'sessions#destroy'
 
+  # get 'transactions/index' => 'transactions#index'
+  # get 'transactions/new' => 'transactions#new'
+  # post 'transactions/new' => 'transactions#create'
+
   root 'home#index'
+
+  resources :transactions
 
   resources :users
   resources :candidates
