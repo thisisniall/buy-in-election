@@ -1,3 +1,17 @@
 // Place all the styles related to the transactions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$blue: #77BED2;
+$red: #F2583E;
+$white: #F7F3E8;
+$grey: #D5E1DD;
+$dark_grey: #747E80;
+$black_blue: #2B3E42;
+
+
+.transaction {
+	width: 40%;
+	height: 400px;
+	background-color: $grey;
+	margin: 0 auto;
+}

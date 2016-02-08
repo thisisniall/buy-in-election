@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   get '/log-in' => 'sessions#new'
   post '/log-in' => 'sessions#create'
   get 'log-out' => 'sessions#destroy'
-
+  
   root 'home#index'
 
+  resources :transactions
   resources :users
   resources :candidates
 
