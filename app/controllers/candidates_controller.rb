@@ -4,7 +4,10 @@ class CandidatesController < ApplicationController
   end
 
   def show
-  	@candidate = Candidates.find(params[:id])
+  	@candidate = Candidate.find(params[:id])
+  	@user = current_user
+    @dem = Iowa::Client.new.dem['results']['collection1']
+    @rep = Iowa::Client.new.rep['results']['collection1']
   end
 
   def edit
@@ -13,6 +16,8 @@ class CandidatesController < ApplicationController
 
   def update
   	@candidate = Candidates.update(candidate_params)
+  	@candidate.save
+  	redirect_to candidates_path(@candidate)
   end
 
   private

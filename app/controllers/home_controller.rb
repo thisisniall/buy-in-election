@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
   def index
     if current_user
+      @candidates = Candidate.all
+      @candidate = Candidate.find_by(id: @i)
       @user = current_user
       	# dem is an array of democratic primary results returned from Iowa markets
       	@dem = Iowa::Client.new.dem['results']['collection1']
