@@ -4,7 +4,11 @@
 		<!-- value 2 in republican array, 5 overall is ted cruz-->
 		<%= t.hidden_field :candidate_id, :value => 5 %>
 		<br>
-		<%= t.hidden_field :price, :value => @rep[2]["average"] %>
+		<% if @rep[2]["average"] != "---" %>
+			<%= t.hidden_field :price, :value => @rep[2]["average"] %>
+		<% else %>
+			<%= t.hidden_field :price, :value => @rep[2]["last"] %>
+		<% end %>
 		<%= t.select :buysell, {"Buy" => 0, "Sell" => 1}, {:prompt => "Select a type of transaction"}, {:class => "candidate_dropdown" }%>
 		<br>
 		<br>
