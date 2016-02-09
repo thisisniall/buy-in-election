@@ -34,22 +34,22 @@ class TransactionsController < ApplicationController
 				return 'shares_sanders'	
 			elsif @transaction.shares_dem_rof != nil
 				share_type_selection_method = 'shares_dem_rof'
-				# @candidate = Candidate.find_by(name: "Democratic Rest of Field")
+				@candidate = Candidate.find_by(name: "Democratic Rest of Field")
 			elsif @transaction.shares_carson != nil
 				share_type_selection_method = 'shares_carson]'
-				# @candidate = Candidate.find_by(name: "Ben Carson")	 
+				@candidate = Candidate.find_by(name: "Ben Carson")	 
 			elsif @transaction.shares_cruz != nil
 				share_type_selection_method = 'shares_cruz'
-				# @candidate = Candidate.find_by(name: "Ted Cruz")	
+				@candidate = Candidate.find_by(name: "Ted Cruz")	
 			elsif @transaction.shares_rubio != nil
 				share_type_selection_method = 'shares_rubio'
-				# @candidate = Candidate.find_by(name: "Marco Rubio")	
+				@candidate = Candidate.find_by(name: "Marco Rubio")	
 			elsif @transaction.shares_trump != nil
 				share_type_selection_method = 'shares_trump'
-				# @candidate = Candidate.find_by(name: "Donald Trump")
+				@candidate = Candidate.find_by(name: "Donald Trump")
 			elsif @transaction.shares_rep_rof != nil
 				share_type_selection_method = 'shares_rep_rof'
-				# @candidate = Candidate.find_by(name: "Republican Rest of Field")
+					@candidate = Candidate.find_by(name: "Republican Rest of Field")
 			end
 			# return share_type_selection_method
 		end

@@ -6,9 +6,12 @@
 				<% if @candidate.name == 'Hillary Clinton' %>
 					<img src="/assets/clinton.jpg" class="candidate_img" />
 					<%= render partial: 'transactions/clinton', locals: {user: @user, transaction: @transaction} %>
-				<% else %>
+				<% elsif @candidate.name == 'Bernie Sanders' %>
 					<img src="/assets/sanders.jpg" class="candidate_img" />
 					<%= render partial: 'transactions/sanders', locals: {user: @user, transaction: @transaction} %>
+				<% else %>
+					<img src="/assets/democraticlogo.png" class="candidate_img" />
+					<%= render partial: 'transactions/dem_rof', locals: {user: @user, transaction: @transaction} %>
 				<% end %>
 				<p><span class="bold">Ticker name:</span> <%= @dem[@candidate.id]["candidate"] %></p>
 				<p><span class="bold">Low:</span> <%= @dem[@candidate.id]['low'] %></p>
@@ -31,7 +34,8 @@
 					<img src="/assets/trump.jpg" class="candidate_img" />
 					<%= render partial: 'transactions/trump', locals: {user: @user, transaction: @transaction} %>
 				<% else %>
-					<%= render partial:  'transaction/rep_rof', locals: {user: @user, transaction: @transaction} %>
+					<img src="/assets/republicanlogo.png" class="candidate_img" />
+					<%= render partial:  'transactions/rep_rof', locals: {user: @user, transaction: @transaction} %>
 				<% end %>
 				<p><span class="bold">Ticker name:</span> <%= @rep[@candidate.id - 3]["candidate"] %></p>
 				<p><span class="bold">Low:</span> <%= @rep[@candidate.id - 3]['low'] %></p>
