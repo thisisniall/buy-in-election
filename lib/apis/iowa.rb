@@ -3,14 +3,9 @@ require 'json'
 
 module Iowa
 	class Client
-
-	
-
 		def initialize
 			@uri = "https://www.kimonolabs.com/api/"
 		end
-
-		
 
 		def make_request(endpoint)
 			JSON.parse(Net::HTTP.get(URI(@uri + endpoint.to_s)))

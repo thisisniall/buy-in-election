@@ -26,6 +26,11 @@ header {
 	height: 50px;
 }
 
+.flash {
+	position: absolute;
+	z-index: 100;
+}
+
 .subtitle {
 	font-size: 20px;
 	font-weight: 500;

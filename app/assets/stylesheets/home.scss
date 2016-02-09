@@ -167,15 +167,19 @@ $black_blue: #2B3E42;
 }
 
 .graph {
-
+	width: 400px;
+	margin: 0 auto;
 }
 
 .graph rect {
+	fill: stealblue;
+}
+
+.rect {
 	fill: blue;
 }
 
 .graph text {
-	fill: white;
 	font: 10px;
 	text-anchor: middle;
 }
