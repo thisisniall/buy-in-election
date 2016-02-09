@@ -23,6 +23,6 @@ class CandidatesController < ApplicationController
   private
 
   def candidate_params
-  	params.require(:candidate).permit(:name, :party, :iowa_average, :iowa_bid, :iowa_ask, :iowa_high, :iowa_low, :twitter_pos, :twitter_neg, :twitter_tot)
+  	params.require(:candidate).permit(:name, :party, :total_shares, :iowa_average, :twitter_pos, :twitter_neg, :twitter_tot)
   end
 end
