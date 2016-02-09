@@ -3,7 +3,11 @@
 		<%= t.hidden_field :user_id, :value => @user.id %>
 		<!-- value 3 in republican array, 6 overall is rubio-->
 		<%= t.hidden_field :candidate_id, :value => 6 %>
-		<%= t.hidden_field :price, :value => @rep[3]["average"] %>
+		<% if @rep[3]["average"] != "---" %>
+			<%= t.hidden_field :price, :value => @rep[3]["average"] %>
+		<% else %>
+			<%= t.hidden_field :price, :value => @rep[3]["last"] %>
+		<% end %>
 		<%= t.select :buysell, {"Buy" => 0, "Sell" => 1}, {:prompt => "Select a type of transaction"}, {:class => "candidate_dropdown" }%>
 		<br>
 		<br>
