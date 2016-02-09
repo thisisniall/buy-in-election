@@ -8,6 +8,7 @@ class CandidatesController < ApplicationController
   	@user = current_user
     @dem = Iowa::Client.new.dem['results']['collection1']
     @rep = Iowa::Client.new.rep['results']['collection1']
+    @transaction = Transaction.new
   end
 
   def edit
