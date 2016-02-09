@@ -1,7 +1,4 @@
 class TransactionsController < ApplicationController
-
-
-
 #notable variables:
 # share_type_selection_method is a variable that will select the appropriate candidate from the users and table and relate them to the correct shares string - on rubio's page, share_type_selection_method will be the user-relationship to rubio
 # buysell 0 is buy, buysell 1 is sell
