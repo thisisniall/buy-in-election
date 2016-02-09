@@ -34,7 +34,7 @@ class TransactionsController < ApplicationController
 				return 'shares_sanders'	
 			elsif @transaction.shares_dem_rof != nil
 				@candidate = Candidate.find_by(name: "Democratic Rest of Field")
-				share_type_selection_method = 'shares_dem_rof'
+				return 'shares_dem_rof'
 			elsif @transaction.shares_carson != nil
 				@candidate = Candidate.find_by(name: "Ben Carson")
 				return 'shares_carson]'
