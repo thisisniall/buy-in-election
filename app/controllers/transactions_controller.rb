@@ -66,10 +66,8 @@ class TransactionsController < ApplicationController
 				@user[share_type_selection_method] = @user[share_type_selection_method] + @transaction[share_type_selection_method]
 				@user.save
 				# update candidate share counts
-				puts @candidate
+				@candidate.update_attribute(:total_shares, @candidate.total_shares + @transaction[share_type_selection_method])
 				puts @candidate.total_shares
-				puts @transaction[share_type_selection_method]
-				@candidate.total_shares = @candidate.total_shares + @transaction[share_type_selection_method]
 				@candidate.iowa_value = @transaction.price
 				@candidate.save
 			# else dissapprove and alert them to the error
@@ -86,7 +84,7 @@ class TransactionsController < ApplicationController
 				@user[share_type_selection_method] = @user[share_type_selection_method] - @transaction[share_type_selection_method]
 				@user.save
 				# update candidate share counts, price, money
-				@candidate.total_shares = @candidate.total_shares - @transaction[share_type_selection_method]
+				@candidate.update_attribute(:total_shares, @candidate.total_shares - @transaction[share_type_selection_method])
 				@candidate.iowa_value = @transaction.price
 				@candidate.save
 			# else disapprove and alert them to the error
@@ -109,4 +107,3 @@ class TransactionsController < ApplicationController
 		params.require(:transaction).permit(:user_id, :candidate_id, :price, :buysell, :total_value, :shares_clinton, :shares_sanders, :shares_dem_rof, :shares_carson, :shares_cruz, :shares_rubio, :shares_trump, :shares_rep_rof)
 	end
 end
-
