@@ -10,6 +10,7 @@ class HomeController < ApplicationController
       	@i = 1
       	# dem_array_length is the length of the dem array
       	@dem_array_length = @dem.length
+        
       	
       	# rep is an array of republican primary results returned from Iowa markets
       	@rep = Iowa::Client.new.rep['results']['collection1']
