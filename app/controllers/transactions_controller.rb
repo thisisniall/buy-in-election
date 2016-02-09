@@ -33,23 +33,23 @@ class TransactionsController < ApplicationController
 				@candidate = Candidate.find_by(name: "Bernie Sanders")
 				return 'shares_sanders'	
 			elsif @transaction.shares_dem_rof != nil
+				@candidate = Candidate.find_by(name: "Democratic Rest of Field")
 				share_type_selection_method = 'shares_dem_rof'
-				# @candidate = Candidate.find_by(name: "Democratic Rest of Field")
 			elsif @transaction.shares_carson != nil
-				share_type_selection_method = 'shares_carson]'
-				# @candidate = Candidate.find_by(name: "Ben Carson")	 
+				@candidate = Candidate.find_by(name: "Ben Carson")
+				return 'shares_carson]'
 			elsif @transaction.shares_cruz != nil
-				share_type_selection_method = 'shares_cruz'
-				# @candidate = Candidate.find_by(name: "Ted Cruz")	
+				@candidate = Candidate.find_by(name: "Ted Cruz")
+				return 'shares_cruz'
 			elsif @transaction.shares_rubio != nil
-				share_type_selection_method = 'shares_rubio'
-				# @candidate = Candidate.find_by(name: "Marco Rubio")	
+				@candidate = Candidate.find_by(name: "Marco Rubio")
+				return 'shares_rubio'	
 			elsif @transaction.shares_trump != nil
-				share_type_selection_method = 'shares_trump'
-				# @candidate = Candidate.find_by(name: "Donald Trump")
+				@candidate = Candidate.find_by(name: "Donald Trump")
+				return'shares_trump'
 			elsif @transaction.shares_rep_rof != nil
-				share_type_selection_method = 'shares_rep_rof'
-				# @candidate = Candidate.find_by(name: "Republican Rest of Field")
+				@candidate = Candidate.find_by(name: "Republican Rest of Field")
+				return'shares_rep_rof'
 			end
 			# return share_type_selection_method
 		end
@@ -66,6 +66,9 @@ class TransactionsController < ApplicationController
 				@user[share_type_selection_method] = @user[share_type_selection_method] + @transaction[share_type_selection_method]
 				@user.save
 				# update candidate share counts
+				puts @candidate
+				puts @candidate.total_shares
+				puts @transaction[share_type_selection_method]
 				@candidate.total_shares = @candidate.total_shares + @transaction[share_type_selection_method]
 				@candidate.iowa_value = @transaction.price
 				@candidate.save
@@ -76,7 +79,7 @@ class TransactionsController < ApplicationController
 			# for selling, we don't need to make sure the user has the money, we need to make sure they have the shares they want to sell
 		elsif @transaction.buysell == 1
 			# if true approve
-			if @user.share_type_selection_method > @transaction.shares 
+			if @user[share_type_selection_method] >= @transaction[share_type_selection_method]
 				@transaction.save
 				# updates user money and share counts
 				@user.money = @user.money + @transaction.total_value 
