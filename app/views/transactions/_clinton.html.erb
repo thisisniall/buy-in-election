@@ -4,7 +4,11 @@
 		<%= t.hidden_field :user_id, :value => @user.id %>
 		<!-- value 1 is hillary -->
 		<%= t.hidden_field :candidate_id, :value => 1 %>
-		<%= t.hidden_field :price, :value => @dem[1]["average"] %>
+		<% if @dem[1]["average"] != "---" %>
+			<%= t.hidden_field :price, :value => @dem[1]["average"] %>
+		<% else %>
+			<%= t.hidden_field :price, :value => @dem[1]["last"] %>
+		<% end %>
 		<%= t.select :buysell, {"Buy" => 0, "Sell" => 1}, {:prompt => "Select a type of transaction"}, {:class => "candidate_dropdown" }%>
 		<br>
 		<br>
