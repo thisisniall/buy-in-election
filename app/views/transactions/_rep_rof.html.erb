@@ -1,9 +1,9 @@
 	<div class="transaction">
 		<%= form_for @transaction do |t| %>
 			<%= t.hidden_field :user_id, :value => @user.id %>
-			<%= "Donald Trump" %>
-			<!-- value 5 is republican rest of field -->
-			<%= t.hidden_field :candidate_id, :value => 5 %>
+			<%= "Republican Rest of Field" %>
+			<!-- value 5 in republican array, value 8 overall is republican rest of field -->
+			<%= t.hidden_field :candidate_id, :value => 8 %>
 			
 			<br>
 			<br>
