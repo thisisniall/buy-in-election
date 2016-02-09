@@ -13,7 +13,7 @@
 				<p><span class="bold">Ticker name:</span> <%= @dem[@candidate.id]["candidate"] %></p>
 				<p><span class="bold">Low:</span> <%= @dem[@candidate.id]['low'] %></p>
 				<p><span class="bold">High:</span> <%= @dem[@candidate.id]['high'] %></p>
-				<p><span class="bold">Average:</span> <%= @dem[@candidate.id]['average'] %></p>
+				<p><span class="bold">Current Price:</span> <%= @dem[@candidate.id]['average'] %></p>
 			</div>
 		<% else %>
 			<div id="rep_candidate">
@@ -21,20 +21,22 @@
 				<% if @candidate.name == "Ben Carson" %>
 					<img src="/assets/carson.jpg" class="candidate_img" />
 					<%= render partial: 'transactions/carson', locals: {user: @user, transaction: @transaction} %>
-				<% elsif @candidate == 'Ted Cruz' %>
+				<% elsif @candidate.name == 'Ted Cruz' %>
 					<img src="/assets/cruz.jpg" class="candidate_img" />
 					<%= render partial: 'transactions/cruz', locals: {user: @user, transaction: @transaction} %>
-				<% elsif @candidate == 'Marco Rubio' %>
+				<% elsif @candidate.name == 'Marco Rubio' %>
 					<img src="/assets/rubio.jpg" class="candidate_img" />
 					<%= render partial: 'transactions/rubio', locals: {user: @user, transaction: @transaction} %>
-				<% else %>
+				<% elsif @candidate.name == 'Donald Trump' %>
 					<img src="/assets/trump.jpg" class="candidate_img" />
 					<%= render partial: 'transactions/trump', locals: {user: @user, transaction: @transaction} %>
+				<% else %>
+					<%= render partial:  'transaction/rep_rof', locals: {user: @user, transaction: @transaction} %>
 				<% end %>
-				<p>Ticker name: <%= @rep[@candidate.id]["candidate"] %></p>
-				<p>Low: <%= @rep[@candidate.id]['low'] %></p>
-				<p>High: <%= @rep[@candidate.id]['high'] %></p>
-				<p>Average: <%= @rep[@candidate.id]['average'] %></p>
+				<p><span class="bold">Ticker name:</span> <%= @rep[@candidate.id - 3]["candidate"] %></p>
+				<p><span class="bold">Low:</span> <%= @rep[@candidate.id - 3]['low'] %></p>
+				<p><span class="bold">High:</span> <%= @rep[@candidate.id - 3]['high'] %></p>
+				<p><span class="bold">Current Price:</span> <%= @rep[@candidate.id - 3]['average'] %></p>
 			</div>
 		<% end %>
 	</div>

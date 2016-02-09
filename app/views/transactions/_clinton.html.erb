@@ -1,17 +1,17 @@
 <div class="transaction">
-		<%= form_for @transaction do |t| %>
-			<br>
-			<%= t.hidden_field :user_id, :value => @user.id %>
-			<!-- value 1 is hillary -->
-			<%= t.hidden_field :candidate_id, :value => 1 %>
-			<%= t.hidden_field :price, :value => @dem[1]["average"] %>
-			<%= t.select :buysell, {"Buy" => 0, "Sell" => 1}, {:prompt => "Select a type of transaction"}, {:class => "candidate_dropdown" }%>
-			<br>
-			<br>
-			<%= t.label :number_of_Shares %>
-			<%= t.number_field :shares_clinton , :class => "candidate_dropdown" %>
-			<br>
-			<br>
-			<%= t.submit :class => "button candidate_dropdown"%>
-		<% end %>
+	<%= form_for @transaction do |t| %>
+		<br>
+		<%= t.hidden_field :user_id, :value => @user.id %>
+		<!-- value 1 is hillary -->
+		<%= t.hidden_field :candidate_id, :value => 1 %>
+		<%= t.hidden_field :price, :value => @dem[1]["average"] %>
+		<%= t.select :buysell, {"Buy" => 0, "Sell" => 1}, {:prompt => "Select a type of transaction"}, {:class => "candidate_dropdown" }%>
+		<br>
+		<br>
+		<%= t.label :number_of_Shares %>
+		<%= t.number_field :shares_clinton , :class => "candidate_dropdown" %>
+		<br>
+		<br>
+		<%= t.submit :class => "button candidate_dropdown"%>
+	<% end %>
 </div>
