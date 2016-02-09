@@ -9,7 +9,15 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>	
+<body>
+	<% if flash[:notice] %>
+		<div class="notice flash" ><%= flash[:notice] %></div>
+	<% end %>
+
+	<% if flash[:alert] %>
+		<div class="alert flash"><%= flash[:alert] %></div>
+	<% end %>
+	
 	<% if !current_user %>
 	<header>
 		<h1 class="title">
