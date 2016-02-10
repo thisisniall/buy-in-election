@@ -13,23 +13,24 @@
 			<img src="assets/reps.jpg" />
 		</div>
 	</div>
-	<div class="graph">
-
-	</div>
+	<div class="graph"></div>
 	<script type="text/javascript" src ="assets/d3.min.js"></script>
 	<script type="text/javascript">
 		// creates the svg viewport selection, where the graph is going to live and be buit
-		var svgContainer = d3.select(".graph").append("svg")
-												.attr("width", 700)
-												.attr("height", 300);
+		var width = 700
+		var height = 300
 
-		var can_name = ['Clinton', 'Sanders', 'Dem_ROF', 'Carson', 'Cruz', 'Rubio', 'Trump', 'Rep_ROF']
+		var svgContainer = d3.select(".graph").append("svg")
+			.attr("width", width)
+			.attr("height", height);
+
+		// var can_name = ['Clinton', 'Sanders', 'Dem_ROF', 'Carson', 'Cruz', 'Rubio', 'Trump', 'Rep_ROF']
 
 
 		// creates the scale that the graph is going to use for the x axis
 		var xaxisScale = d3.scale.ordinal()
-									.domain(['Clinton', 'Sanders', 'Dem_ROF', 'Carson', 'Cruz', 'Rubio', 'Trump', 'Rep_ROF'])
-									.rangeRoundBands([0, 600], .1);
+			.domain(['Clinton', 'Sanders', 'Dem_ROF', 'Carson', 'Cruz', 'Rubio', 'Trump', 'Rep_ROF'])
+			.rangeRoundBands([0, 600], .1);
 
 		// creates the scale that the graph is going to use for the y axis
 		var yaxisScale = d3.scale.linear()
@@ -53,19 +54,40 @@
 										.attr("transform", "translate(35, 25)")
 										.call(yAxis);
 
-		var data = [0.1, 0.4, 0.5, 0.2, 0.78, 0.8, 0.5, 0.9]
+		// 
+		var data = [<%= @clin %>, <%= @sand %>, <%= @dem_rof %>, <%= @car %>, <%= @cruz %>, <%= @rub %>, <%= @trump %>, <%= @rep_rof %>]
 
 		var barWidth = 700 / data.length;
 
-		// var bar = svgContainer.selectAll("div")
-		// 	.data(data)
-		//   .enter().append("g")
-		//   	.attr("transform", function(d, i) { return "translate(" + i * barWidth + ",0)"; });
+		svgContainer.selectAll("rect")
+			.data(data)
+			.enter()
+			.append("rect")
+			.attr("x", function(d, i) {
+				return i * (600 / data.length); // this makes a bar with a couple pixels of padding
+			})
+			.attr("y", function(d) {
+				return 270 - (d * 250);
+			})
+			.attr("width", 50)
+			.attr("height", function(d) {
+				return d * 250;
+			})
+			.attr('transform', 'translate(45, 0)');
 
-		// bar.append("rect")
-		// 	.attr("y", function(d) { return y(data); })
-		// 	.attr("height", function(d) { return height - y(data); })
-		// 	.attr("width", xaxisScale.rangeBand());
+		// var x = d3.scale.linear()
+		// 	.domain([0, d3.max(data)])
+		// 	.range([0, 200]);
+
+		// var bar = svgContainer.selectAll('g')
+		// 		.data(data)
+		// 		.enter().append('g')
+				// .attr('transform', 'translate(35, 250)')
+				
+		// bar.append('rect')
+		// 	.attr('width', barWidth)
+		// 	.attr('transform', function(d, i) { return "translate(0," + i * 100 + ")"; });
+
 
 
 	</script>
@@ -83,7 +105,7 @@
 					<h1><%= link_to 'Bernie Sanders', candidate_path(@i), class: 'cand_name' %></h1>
 					<img src="assets/sanders.jpg" class="candidate_img" />
 				<% else %>
-					<h1><%= link_to 'Democrat Rest of Field', candidate_path(@i), class: 'cand_name' %></h1>
+					<h1><%= link_to 'Democratic Rest of Field', candidate_path(@i), class: 'cand_name' %></h1>
 					<img src="assets/democraticlogo.png" class="candidate_img" />
 				<% end %>
 				<h2><%= @c['candidate'] %></h2>
