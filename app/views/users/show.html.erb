@@ -31,7 +31,7 @@
 				<p>Cruz: <%= @user.shares_cruz %></p>
 				<p>Rubio: <%= @user.shares_rubio %></p>
 				<p>Trump: <%= @user.shares_trump %></p>
-				<p>Rest of Feild: <%= @user.shares_rep_rof %></p>
+				<p>Rest of Field: <%= @user.shares_rep_rof %></p>
 			</div>
 		</div>
 		<div id="user_graph">
@@ -46,6 +46,7 @@
 			.attr("height", height);
 
 		// creates the scale that the graph is going to use for the x axis
+		// needs to be ordinal so that you can insert your own tick names
 		var xaxisScale = d3.scale.ordinal()
 			.domain(['Clinton', 'Sanders', 'Dem_ROF', 'Carson', 'Cruz', 'Rubio', 'Trump', 'Rep_ROF'])
 			.rangeRoundBands([0, 600], .1);
@@ -68,6 +69,7 @@
 			.ticks(5)
 			.orient("left");
 
+		// this adds some text to the graph that will act as the title
 		svgContainer.append("text")
 			.attr("class", "title")
 			.attr("x", ((width / 2) - 25))
@@ -99,10 +101,10 @@
 			.append("rect")
 			.attr("x", function(d, i) { return i * (600 / data.length); })
 			// this makes a bar with a couple pixels of padding
-			.attr("y", function(d) { return 275 - (d /2); })
+			.attr("y", function(d) { return  (240 - ((d / dataArray) * 200)); })
 			.attr("width", 50)
-			.attr("height", function(d) { return d / 2; })
-			.attr('transform', 'translate(70, -16)');
+			.attr("height", function(d) { return ((d / dataArray) * 200); })
+			.attr('transform', 'translate(70, 19)');
 
 		bar.append("text")
 			.data(data)
@@ -110,7 +112,7 @@
 			.append("text")
 			.text(function(d) { return d; })
 			.attr("x", function(d, i) { return i * (600 / data.length) + 5; })
-			.attr("y", function(d) { return 275 - (d /2); })
+			.attr("y", function(d) { return 280 - ((d / dataArray) * 200); })
 			.attr("font-family", "helvetica")
 			.attr("font-size", "11px")
 			.attr("fill", "white")
