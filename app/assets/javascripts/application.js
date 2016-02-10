@@ -17,6 +17,7 @@
 
 
 $(document).ready(function(){
+	$('.flash').fadeOut(5000);
 
 	$('.link').hover(function(){
 		$(this).css({
