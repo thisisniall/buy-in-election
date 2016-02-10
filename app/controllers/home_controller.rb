@@ -26,7 +26,7 @@ class HomeController < ApplicationController
       	@rep = Iowa::Client.new.rep['results']['collection1']
       	# i stands in for the position in the array
       	@x = 1
-      	# dem_array_length is the length of the rep array minus 1
+      	# dem_array_lsength is the length of the rep array minus 1
       	@rep_array_length = @rep.length
       	@z = 0
 
