@@ -30,7 +30,20 @@ $(document).ready(function(){
 			});
 		}
 	);
-	
 
+		$(".modal-link").on("click", function(e){
+			// prevent default is needed to avoid link taking us to a new page
+			e.preventDefault();
+			// primarily for testing
+			console.log("clicked on about link");
+			// changes display option to reveal display:none element
+			$(".outer-modal").css({"display": "block"})
+		});
 
-});
+		// clicking anywhere on the page makes the image go away - only relevant if the link has been clicked
+		$(".outer-modal").on("click", function(){
+			$(".outer-modal").css({"display": "none"})
+		});
+
+	}
+);
