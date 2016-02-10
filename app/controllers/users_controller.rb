@@ -40,6 +40,17 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@candidates = Candidate.all
+		@clin = @user.shares_clinton
+		@sand = @user.shares_sanders
+		@dem_rof = @user.shares_dem_rof
+		@car = @user.shares_carson
+		@cruz = @user.shares_cruz
+		@rub = @user.shares_rubio
+		@trump = @user.shares_trump
+		@rep_rof = @user.shares_rep_rof
+		@dataArray = [@clin, @sand, @dem_rof, @car, @cruz, @rub, @trump, @rep_rof].max
+		# @max = @dataArray.max
 	end
 
 	def index

@@ -20,22 +20,104 @@
 		<div id="user_stocks">
 			<h2 class="skinny bottom_space">Stocks</h2>
 			<div id="dems">
-				<p class="skinny_subtitle center">Democrats</p>
+				<h2 class="center">Democrats</h2>
 				<p>Clinton: <%= @user.shares_clinton %></p>
 				<p>Sanders: <%= @user.shares_sanders %></p>
 				<p>Rest of Field: <%= @user.shares_dem_rof %></p>
 			</div>
 			<div id="reps">
-				<p class="skinny_subtitle center">Republicans</p>
+				<h2 class="center">Republicans</h2>
 				<p>Carson: <%= @user.shares_carson %></p>
 				<p>Cruz: <%= @user.shares_cruz %></p>
 				<p>Rubio: <%= @user.shares_rubio %></p>
 				<p>Trump: <%= @user.shares_trump %></p>
-				<P>Rest of Feild: <%= @user.shares_rep_rof %></p>
+				<p>Rest of Feild: <%= @user.shares_rep_rof %></p>
 			</div>
 		</div>
 		<div id="user_graph">
 			<div class="ugraph">
+	<script type="text/javascript">
+		// creates the svg viewport selection, where the graph is going to live and be buit
+		var width = 700
+		var height = 300
+
+		var svgContainer = d3.select(".ugraph").append("svg")
+			.attr("width", width)
+			.attr("height", height);
+
+		// creates the scale that the graph is going to use for the x axis
+		var xaxisScale = d3.scale.ordinal()
+			.domain(['Clinton', 'Sanders', 'Dem_ROF', 'Carson', 'Cruz', 'Rubio', 'Trump', 'Rep_ROF'])
+			.rangeRoundBands([0, 600], .1);
+
+		var data = [<%= @clin %>, <%= @sand %>, <%= @dem_rof %>, <%= @car %>, <%= @cruz %>, <%= @rub %>, <%= @trump %>, <%= @rep_rof %>]
+
+		// dataArray refers to a variable set in the controller that is an array of all the candidates shares that the current user owns. within that array the max value is selected so that it can be used to define the vertical scale of the y axis
+		var dataArray = <%= @dataArray %>;
+
+		// creates the scale that the graph is going to use for the y axis
+		var yaxisScale = d3.scale.linear()
+			.domain([0, (dataArray + 100)])
+			.range([240, 0])
+		// actually creates the axis
+		var xAxis = d3.svg.axis()
+			.scale(xaxisScale);
+
+		var yAxis = d3.svg.axis()
+			.scale(yaxisScale)
+			.ticks(5)
+			.orient("left");
+
+		svgContainer.append("text")
+			.attr("class", "title")
+			.attr("x", ((width / 2) - 25))
+			.attr("y", 35)
+			.attr('transform', 'translate(40, 0)')
+			.style("text-anchor", "middle")
+			.text("<%= @user.fname %>  <%= @user.lname %>'s Stocks")
+
+		// creates an SVG group element (g) for the axis elements to be housed within and calls the xAxis function - this is what puts it on the page
+		var xAxisGroup = svgContainer.append("g")
+			.attr("class", "axis")
+			.attr("transform", "translate(55, 260)")
+			.call(xAxis);
+
+		var yAxisGroup = svgContainer.append("g")
+			.attr("class", "axis")
+			.attr("transform", "translate(60, 25)")
+			.call(yAxis);
+
+		var bar = svgContainer.selectAll("g")
+			.data(data)
+			.enter()
+			.append('g')
+			.attr("transform", function(d) { return "translate(" + xAxisGroup(d) + ",0)"; });
+
+		bar.append("rect")
+			.data(data)
+			.enter()
+			.append("rect")
+			.attr("x", function(d, i) { return i * (600 / data.length); })
+			// this makes a bar with a couple pixels of padding
+			.attr("y", function(d) { return 275 - (d /2); })
+			.attr("width", 50)
+			.attr("height", function(d) { return d / 2; })
+			.attr('transform', 'translate(70, -16)');
+
+		bar.append("text")
+			.data(data)
+			.enter()
+			.append("text")
+			.text(function(d) { return d; })
+			.attr("x", function(d, i) { return i * (600 / data.length) + 5; })
+			.attr("y", function(d) { return 275 - (d /2); })
+			.attr("font-family", "helvetica")
+			.attr("font-size", "11px")
+			.attr("fill", "white")
+			.attr('transform', 'translate(83, -23)')
+			.attr('class', 'num');
+
+	</script>
 			</div>
 		</div>
 	</div>

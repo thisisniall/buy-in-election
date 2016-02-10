@@ -4,10 +4,11 @@
 			<img src="assets/dems.png" />
 		</div>
 		<div class="duser_graph">
-			<img src="assets/DCONV16_graph.png" />
+			<%= render partial: 'dem_graph', local: {user: @user} %>
 		</div>
 		<div class="ruser_graph">
-			<img src="assets/RCONV16_graph.png" />
+			<%= render partial: 'rep_graph', local: {user: @user} %>
+			<!-- <img src="assets/RCONV16_graph.png" /> -->
 		</div>
 		<div class="rsplash_image">
 			<img src="assets/reps.jpg" />
@@ -17,16 +18,25 @@
 	<script type="text/javascript" src ="assets/d3.min.js"></script>
 	<script type="text/javascript">
 		// creates the svg viewport selection, where the graph is going to live and be buit
-		var width = 700
-		var height = 300
+		var width = 645
+		var height = 375
 
 		var svgContainer = d3.select(".graph").append("svg")
 			.attr("width", width)
 			.attr("height", height);
 
-		// var can_name = ['Clinton', 'Sanders', 'Dem_ROF', 'Carson', 'Cruz', 'Rubio', 'Trump', 'Rep_ROF']
+		svgContainer.append("text")
+			.attr("class", "title")
+			.attr("x", (width / 2))
+			.attr("y", 70)
+			.attr('transform', 'translate(-30, 0)')
+			.style("text-anchor", "middle")
+			.text("Overall Race")
 
+		var data = [<%= @clin %>, <%= @sand %>, <%= @dem_rof %>, <%= @car %>, <%= @cruz %>, <%= @rub %>, <%= @trump %>, <%= @rep_rof %>]
 
+		var lastdata = [<%= @clinL %>, <%= @sandL %>, <%= @dem_rofL %>, <%= @carL %>, <%= @cruzL %>, <%= @rubL %>, <%= @trumpL %>, <%= @rep_rofL %>]
+		
 		// creates the scale that the graph is going to use for the x axis
 		var xaxisScale = d3.scale.ordinal()
 			.domain(['Clinton', 'Sanders', 'Dem_ROF', 'Carson', 'Cruz', 'Rubio', 'Trump', 'Rep_ROF'])
@@ -34,61 +44,71 @@
 
 		// creates the scale that the graph is going to use for the y axis
 		var yaxisScale = d3.scale.linear()
-									.domain([0.00, 1.00])
-									.range([250, 0])
+			.domain([0.00, 1.00])
+			.range([250, 0])
 		// actually creates the axis
 		var xAxis = d3.svg.axis()
-							.scale(xaxisScale);
+			.scale(xaxisScale);
 
 		var yAxis = d3.svg.axis()
-							.scale(yaxisScale)
-							.ticks(5)
-							.orient("left");
+			.scale(yaxisScale)
+			.ticks(5)
+			.orient("left");
 
 		// creates an SVG group element (g) for the axis elements to be housed within and calls the xAxis function - this is what puts it on the page
 		var xAxisGroup = svgContainer.append("g")
-										.attr("transform", "translate(30, 270)")
-										.call(xAxis);
+			.attr("class", "axis")
+			.attr("transform", "translate(30, 320)")
+			.call(xAxis);
 
 		var yAxisGroup = svgContainer.append("g")
-										.attr("transform", "translate(35, 25)")
-										.call(yAxis);
-
-		// 
-		var data = [<%= @clin %>, <%= @sand %>, <%= @dem_rof %>, <%= @car %>, <%= @cruz %>, <%= @rub %>, <%= @trump %>, <%= @rep_rof %>]
+			.attr("class", "axis")
+			.attr("transform", "translate(35, 75)")
+			.call(yAxis);
 
 		var barWidth = 700 / data.length;
 
-		svgContainer.selectAll("rect")
+		var bar = svgContainer.selectAll('g')
+		<% if @clin || @sand || @dem_rof || @car || @cruz || @rub || @trump || @rep_rof == '---' %>
+		// one weak link in the array results in the last value being displayed for all candidates
+			.data(lastdata)
+		<% else %>
 			.data(data)
+		<% end %>
+			.enter()
+			.append('g')
+			.attr("transform", function(d) { return "translate(" + xAxisGroup(d) + ",0)"; });
+
+
+		bar.append("rect")
+		<% if @clin || @sand || @dem_rof || @car || @cruz || @rub || @trump || @rep_rof == '---' %>
+			.data(lastdata)
+		<% else %>
+			.data(data)
+		<% end %>
 			.enter()
 			.append("rect")
-			.attr("x", function(d, i) {
-				return i * (600 / data.length); // this makes a bar with a couple pixels of padding
-			})
-			.attr("y", function(d) {
-				return 270 - (d * 250);
-			})
+			.attr("x", function(d, i) { return i * (600 / data.length); })
+			// this makes a bar with a couple pixels of padding
+			.attr("y", function(d) { return 270 - (d * 250); })
 			.attr("width", 50)
-			.attr("height", function(d) {
-				return d * 250;
-			})
-			.attr('transform', 'translate(45, 0)');
+			.attr("height", function(d) { return d * 250; })
+			.attr('transform', 'translate(45, 49)');
 
-		// var x = d3.scale.linear()
-		// 	.domain([0, d3.max(data)])
-		// 	.range([0, 200]);
-
-		// var bar = svgContainer.selectAll('g')
-		// 		.data(data)
-		// 		.enter().append('g')
-				// .attr('transform', 'translate(35, 250)')
-				
-		// bar.append('rect')
-		// 	.attr('width', barWidth)
-		// 	.attr('transform', function(d, i) { return "translate(0," + i * 100 + ")"; });
-
-
+		bar.append("text")
+		<% if @clin || @sand || @dem_rof || @car || @cruz || @rub || @trump || @rep_rof == '---' %>
+			.data(lastdata)
+		<% else %>
+			.data(data)
+		<% end %>
+			.enter()
+			.append('text')
+			.attr("x", function(d, i) { return i * (600 / data.length); })
+			.attr("y", function(d) { return 270 - (d * 250); })
+			.attr("dy", ".75em")
+	    	.text(function(d) { return d; })
+			.attr('transform', 'translate(65, 30)')
+			.attr('class', 'num');
 
 	</script>
 	
