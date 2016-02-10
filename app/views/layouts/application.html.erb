@@ -46,6 +46,9 @@
 					<%= link_to "HOME", root_path, :class => "link"%>
 				</li>
 				<li>
+					<%= link_to "ABOUT", "#", :class => "modal-link link"%>
+				</li>
+				<li>
 					<%= link_to "ACCOUNT", user_path(@user), :class => "link" %>
 				</li>
 				<li>
@@ -56,6 +59,20 @@
 	</header>
 	<% end %>
 		
+	<div class="outer-modal">
+		<div class="inner-modal">
+				<h1>Welcome to Buy-In Election!</h1>
+				<p>
+					Buy-In Election is an simulated election-futures market that uses the University of Iowa Electronic Markets (IEM) to provide up-to-date pricing data on individual futures contracts. For the layman, within the scope of this app, the terms "future", "contract", and "stock" are effectively interchangeable.  Individual stocks oscillate in value from $0.001 to $0.999. At the end of the nomination (or, later, the general election) cycle, stockholders will receive $1 for every winning contract.
+				</p>
+				<ul>Further Details on Futures Market:
+					<li> <a href="http://tippie.uiowa.edu/iem/markets/pr_dconv16.html">IEM Democratic Convention Market</a></li>
+					<li> <a href="http://tippie.uiowa.edu/iem/markets/pr_rconv16.html">IEM Republican Convention Market</a></li>
+				</ul>
+				<br><br>
+				Created by <a href="https://github.com/andrew-schultz">Andy</a> and <a href="https://github.com/thisisniall">Niall</a> for <a href="http://nycda.com">NYCDA</a>.
+		</div>
+	</div>
 
 <%= yield %>
 
