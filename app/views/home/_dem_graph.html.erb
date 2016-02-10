@@ -1,0 +1,64 @@
+<div class="dem_graph"></div>
+	<script type="text/javascript" src ="assets/d3.min.js"></script>
+	<script type="text/javascript">
+		// creates the svg viewport selection, where the graph is going to live and be buit
+		var width = 650
+		var height = 401
+
+		var svgContainer = d3.select(".dem_graph").append("svg")
+			.attr("width", width)
+			.attr("height", height);
+
+		// var can_name = ['Clinton', 'Sanders', 'Dem_ROF', 'Carson', 'Cruz', 'Rubio', 'Trump', 'Rep_ROF']
+
+		var data = [<%= @clin %>, <%= @sand %>, <%= @dem_rof %>]
+		
+		// creates the scale that the graph is going to use for the x axis
+		var xaxisScale = d3.scale.ordinal()
+			.domain(['Clinton', 'Sanders', 'Dem_ROF'])
+			.rangeRoundBands([0, 600], .1);
+
+		// creates the scale that the graph is going to use for the y axis
+		var yaxisScale = d3.scale.linear()
+			.domain([0.00, 1.00])
+			.range([250, 0])
+		// actually creates the axis
+		var xAxis = d3.svg.axis()
+			.scale(xaxisScale);
+
+		var yAxis = d3.svg.axis()
+			.scale(yaxisScale)
+			.ticks(5)
+			.orient("left");
+
+		// creates an SVG group element (g) for the axis elements to be housed within and calls the xAxis function - this is what puts it on the page
+		var xAxisGroup = svgContainer.append("g")
+			.attr("transform", "translate(80, 330)")
+			.call(xAxis);
+
+		var yAxisGroup = svgContainer.append("g")
+			.attr("transform", "translate(85, 85)")
+			.call(yAxis);
+
+		// 
+
+		var barWidth = 400 / data.length;
+
+		svgContainer.selectAll("rect")
+			.data(data)
+			.enter()
+			.append("rect")
+			.attr("x", function(d, i) {
+				return i * (600 / data.length); // this makes a bar with a couple pixels of padding
+			})
+			.attr("y", function(d) {
+				return 270 - (d * 250);
+			})
+			.attr("width", 80)
+			.attr("height", function(d) {
+				return d * 250;
+			})
+			.attr('transform', 'translate(145, 60)');
+
+	</script>
+	

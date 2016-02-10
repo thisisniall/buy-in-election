@@ -4,10 +4,11 @@
 			<img src="assets/dems.png" />
 		</div>
 		<div class="duser_graph">
-			<img src="assets/DCONV16_graph.png" />
+			<%= render partial: 'dem_graph', local: {user: @user} %>
 		</div>
 		<div class="ruser_graph">
-			<img src="assets/RCONV16_graph.png" />
+			<%= render partial: 'rep_graph', local: {user: @user} %>
+			<!-- <img src="assets/RCONV16_graph.png" /> -->
 		</div>
 		<div class="rsplash_image">
 			<img src="assets/reps.jpg" />
@@ -26,7 +27,8 @@
 
 		// var can_name = ['Clinton', 'Sanders', 'Dem_ROF', 'Carson', 'Cruz', 'Rubio', 'Trump', 'Rep_ROF']
 
-
+		var data = [<%= @clin %>, <%= @sand %>, <%= @dem_rof %>, <%= @car %>, <%= @cruz %>, <%= @rub %>, <%= @trump %>, <%= @rep_rof %>]
+		
 		// creates the scale that the graph is going to use for the x axis
 		var xaxisScale = d3.scale.ordinal()
 			.domain(['Clinton', 'Sanders', 'Dem_ROF', 'Carson', 'Cruz', 'Rubio', 'Trump', 'Rep_ROF'])
@@ -34,28 +36,27 @@
 
 		// creates the scale that the graph is going to use for the y axis
 		var yaxisScale = d3.scale.linear()
-									.domain([0.00, 1.00])
-									.range([250, 0])
+			.domain([0.00, 1.00])
+			.range([250, 0])
 		// actually creates the axis
 		var xAxis = d3.svg.axis()
-							.scale(xaxisScale);
+			.scale(xaxisScale);
 
 		var yAxis = d3.svg.axis()
-							.scale(yaxisScale)
-							.ticks(5)
-							.orient("left");
+			.scale(yaxisScale)
+			.ticks(5)
+			.orient("left");
 
 		// creates an SVG group element (g) for the axis elements to be housed within and calls the xAxis function - this is what puts it on the page
 		var xAxisGroup = svgContainer.append("g")
-										.attr("transform", "translate(30, 270)")
-										.call(xAxis);
+			.attr("transform", "translate(30, 270)")
+			.call(xAxis);
 
 		var yAxisGroup = svgContainer.append("g")
-										.attr("transform", "translate(35, 25)")
-										.call(yAxis);
+			.attr("transform", "translate(35, 25)")
+			.call(yAxis);
 
 		// 
-		var data = [<%= @clin %>, <%= @sand %>, <%= @dem_rof %>, <%= @car %>, <%= @cruz %>, <%= @rub %>, <%= @trump %>, <%= @rep_rof %>]
 
 		var barWidth = 700 / data.length;
 
@@ -74,21 +75,6 @@
 				return d * 250;
 			})
 			.attr('transform', 'translate(45, 0)');
-
-		// var x = d3.scale.linear()
-		// 	.domain([0, d3.max(data)])
-		// 	.range([0, 200]);
-
-		// var bar = svgContainer.selectAll('g')
-		// 		.data(data)
-		// 		.enter().append('g')
-				// .attr('transform', 'translate(35, 250)')
-				
-		// bar.append('rect')
-		// 	.attr('width', barWidth)
-		// 	.attr('transform', function(d, i) { return "translate(0," + i * 100 + ")"; });
-
-
 
 	</script>
 	

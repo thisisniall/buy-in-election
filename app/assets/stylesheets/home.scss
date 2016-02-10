@@ -166,9 +166,45 @@ $black_blue: #2B3E42;
 	}
 }
 
+.dem_graph {
+	background-color: $blue;
+	fill: $white;
+		g {
+			fill: $black_blue;
+			.tick {
+				font-weight: 700;
+				font-size: 20px;
+				font-family: 'futura';
+			}
+		}
+
+}
+
+.rep_graph {
+	background-color: $red;
+	fill: $white;
+
+		g {
+			fill: $black_blue;
+			.tick {
+				font-weight: 700;
+				font-size: 20px;
+				font-family: 'futura';
+			}
+		}
+}
+
 .graph {
 	width: 600px;
 	margin: 0 auto;
+		g {
+			fill: $black_blue;
+			.tick {
+				font-weight: 500;
+				font-family: 'futura';
+				font-size: 16px;
+			}
+		}
 }
 
 .graph rect {
