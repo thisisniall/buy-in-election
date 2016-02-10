@@ -157,6 +157,27 @@ $black_blue: #2B3E42;
 			rect {
 				fill: steelblue;
 			}
+
+			.title {
+				font-family: 'futura';
+				font-size: 30px;
+				font-weight: 300;
+				letter-spacing: 1px;
+				fill: $black_blue;
+			}
+
+			.num {
+				font-family: 'futura';
+				fill: $black_blue;
+			}
+
+			.axis path,
+			.axis line {
+			    fill: none;
+			    stroke: $black_blue;
+			    stroke-width: 3px;
+			    shape-rendering: crispEdges;
+		}
 		}
 	}
 }

@@ -11,10 +11,15 @@ class HomeController < ApplicationController
       	# dem_array_length is the length of the dem array
       	@dem_array_length = @dem.length
 
+        # need to define these for the data array used in the graphs
         @clin = @dem[1]['average'].to_f
         @sand = @dem[2]['average'].to_f
         @dem_rof = @dem[3]['average'].to_f
-        
+
+        # need to define these for the backup data array used in the graphs
+        @clinL = @dem[1]['last'].to_f
+        @sandL = @dem[2]['last'].to_f
+        @dem_rofL = @dem[3]['last'].to_f
         
       	
       	# rep is an array of republican primary results returned from Iowa markets
@@ -30,6 +35,12 @@ class HomeController < ApplicationController
         @rub = @rep[3]['average'].to_f
         @trump = @rep[4]['average'].to_f
         @rep_rof = @rep[5]['average'].to_f
+
+        @carL = @rep[1]['last'].to_f
+        @cruzL = @rep[2]['last'].to_f
+        @rubL = @rep[3]['last'].to_f
+        @trumpL = @rep[4]['last'].to_f
+        @rep_rofL = @rep[5]['last'].to_f
       else
         redirect_to log_in_path
       end

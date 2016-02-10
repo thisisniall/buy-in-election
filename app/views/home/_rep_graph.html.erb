@@ -12,6 +12,7 @@
 		// var can_name = ['Clinton', 'Sanders', 'Dem_ROF', 'Carson', 'Cruz', 'Rubio', 'Trump', 'Rep_ROF']
 
 		var data = [<%= @car %>, <%= @cruz %>, <%= @rub %>, <%= @trump %>, <%= @rep_rof %>]
+		var lastdata = [<%= @carL %>, <%= @cruzL %>, <%= @rubL %>, <%= @trumpL %>, <%= @rep_rofL %>]
 		
 		// creates the scale that the graph is going to use for the x axis
 		var xaxisScale = d3.scale.ordinal()
@@ -33,32 +34,64 @@
 
 		// creates an SVG group element (g) for the axis elements to be housed within and calls the xAxis function - this is what puts it on the page
 		var xAxisGroup = svgContainer.append("g")
+			.attr("class", "axis")
 			.attr("transform", "translate(80, 330)")
 			.call(xAxis);
 
 		var yAxisGroup = svgContainer.append("g")
+			.attr("class", "axis")
 			.attr("transform", "translate(85, 85)")
 			.call(yAxis);
 
-		// 
+		svgContainer.append("text")
+			.attr("class", "title")
+			.attr("x", (width / 2))
+			.attr("y", 70)
+			.attr('transform', 'translate(40, 0)')
+			.style("text-anchor", "middle")
+			.text("Republican Party")
 
-		var barWidth = 400 / data.length;
-
-		svgContainer.selectAll("rect")
+		var bar = svgContainer.selectAll("g")
+		<% if @car || @cruz || @rub || @trump || @rep_rof == '---' %>
+			.data(lastdata)
+		<% else %>
 			.data(data)
+		<% end %>
+			.enter()
+			.append('g')
+			.attr("transform", function(d) { return "translate(" + xAxisGroup(d) + ",0)"; });
+
+
+		bar.append("rect")
+		<% if @car || @cruz || @rub || @trump || @rep_rof == '---' %>
+			.data(lastdata)
+		<% else %>
+			.data(data)
+		<% end %>
+			.attr('class', 'num')
 			.enter()
 			.append("rect")
-			.attr("x", function(d, i) {
-				return i * (600 / data.length); // this makes a bar with a couple pixels of padding
-			})
-			.attr("y", function(d) {
-				return 270 - (d * 250);
-			})
+			.attr("x", function(d, i) { return i * (590 / data.length); })
+			// this makes a bar with a couple pixels of padding
+			.attr("y", function(d) { return 270 - (d * 250); })
 			.attr("width", 50)
-			.attr("height", function(d) {
-				return d * 250;
-			})
-			.attr('transform', 'translate(115, 60)');
+			.attr("height", function(d) { return d * 250; })
+			.attr('transform', 'translate(118, 59)');
+
+		bar.append("text")
+		<% if @car || @cruz || @rub || @trump || @rep_rof == '---' %>
+			.data(lastdata)
+		<% else %>
+			.data(data)
+		<% end %>
+			.enter()
+			.append("text")
+	    	.attr("x", function(d, i) { return i * (590 / data.length) })
+	    	.attr("y", function(d) { return 270 - (d * 250); })
+	    	.attr("dy", ".75em")
+	    	.text(function(d) { return d; })
+	    	.attr('transform', 'translate(120, 40)')
+	    	.attr('class', 'num');
 
 	</script>
 	

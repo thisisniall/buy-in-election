@@ -169,6 +169,22 @@ $black_blue: #2B3E42;
 .dem_graph {
 	background-color: $blue;
 	fill: $white;
+
+		.title {
+			font-family: 'futura';
+			font-size: 30px;
+			font-weight: 300;
+			letter-spacing: 1px;
+		}
+
+		.axis path,
+		.axis line {
+		    fill: none;
+		    stroke: $black_blue;
+		    stroke-width: 3px;
+		    shape-rendering: crispEdges;
+		}
+
 		g {
 			fill: $black_blue;
 			.tick {
@@ -178,11 +194,22 @@ $black_blue: #2B3E42;
 			}
 		}
 
+		.num {
+			font-family: 'futura';
+			font-weight: 300;
+		}
 }
 
 .rep_graph {
 	background-color: $red;
 	fill: $white;
+		.axis path,
+		.axis line {
+		    fill: none;
+		    stroke: $black_blue;
+		    stroke-width: 3px;
+		    shape-rendering: crispEdges;
+		}
 
 		g {
 			fill: $black_blue;
@@ -192,11 +219,32 @@ $black_blue: #2B3E42;
 				font-family: 'futura';
 			}
 		}
+		
+		.title {
+			font-family: 'futura';
+			font-size: 30px;
+			font-weight: 300;
+			letter-spacing: 1px;
+		}
+
+		.num {
+			font-family: 'futura';
+		}
+
 }
 
 .graph {
 	width: 600px;
 	margin: 0 auto;
+
+		.axis path,
+		.axis line {
+		    fill: none;
+		    stroke: $black_blue;
+		    stroke-width: 3px;
+		    shape-rendering: crispEdges;
+		}
+
 		g {
 			fill: $black_blue;
 			.tick {
@@ -205,18 +253,24 @@ $black_blue: #2B3E42;
 				font-size: 16px;
 			}
 		}
+
+		.title {
+			font-family: 'futura';
+			font-size: 30px;
+			font-weight: 300;
+			letter-spacing: 1px;
+			fill: $black_blue;
+		}
+
+		.num {
+			font-family: 'futura';
+			fill: $black_blue;
+			text-anchor: middle;
+		}
+
+		rect {
+  			fill: steelblue;
+		}
 }
 
-.graph rect {
-  fill: steelblue;
-}
-
-.rect {
-	fill: blue;
-}
-
-.graph text {
-	font: 10px;
-	text-anchor: middle;
-}
 
