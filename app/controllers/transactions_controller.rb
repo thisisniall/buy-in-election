@@ -51,7 +51,6 @@ class TransactionsController < ApplicationController
 				@candidate = Candidate.find_by(name: "Republican Rest of Field")
 				return'shares_rep_rof'
 			end
-			# return share_type_selection_method
 		end
 
 		# we use 0 for buy orders and 1 for sell orders, below conditional loop is for buy orders
@@ -68,6 +67,7 @@ class TransactionsController < ApplicationController
 				# update candidate share counts
 				@candidate.update_attribute(:total_shares, @candidate.total_shares + @transaction[share_type_selection_method])
 				puts @candidate.total_shares
+				# may need / want to remove the updates for candidate price here once this is live deployed to heroku as heroku scheduler will do this for us
 				@candidate.iowa_value = @transaction.price
 				@candidate.save
 			# else dissapprove and alert them to the error
@@ -85,6 +85,7 @@ class TransactionsController < ApplicationController
 				@user.save
 				# update candidate share counts, price, money
 				@candidate.update_attribute(:total_shares, @candidate.total_shares - @transaction[share_type_selection_method])
+					# may need / want to remove the updates for candidate price here once this is live deployed to heroku as heroku scheduler will do this for us
 				@candidate.iowa_value = @transaction.price
 				@candidate.save
 			# else disapprove and alert them to the error
