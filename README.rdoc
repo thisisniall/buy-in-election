@@ -23,6 +23,8 @@ Things you may want to cover:
 
 * ...
 
+* Democrats are 0, Republicans are 1 (integer values for party affiliation)
+
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

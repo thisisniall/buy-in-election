@@ -1,8 +1,6 @@
 class Candidate < ActiveRecord::Base
 	has_many :transactions
 
-
-
 	def self.d_get_data
 		require 'open-uri'
 		doc = Nokogiri::XML(open("https://iemweb.biz.uiowa.edu/quotes/365.html"))
