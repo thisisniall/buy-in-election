@@ -44,4 +44,10 @@ class Candidate < ActiveRecord::Base
 		end
 		return @republicans
 	end
+
+	def self.update_candidates
+		self.d_get_data
+		self.r_get_data
+	end
+
 end
