@@ -6,8 +6,8 @@ class CandidatesController < ApplicationController
   def show
   	@candidate = Candidate.find(params[:id])
   	@user = current_user
-    @dem = Iowa::Client.new.dem['results']['collection1']
-    @rep = Iowa::Client.new.rep['results']['collection1']
+    @dem = Dem::Client.new.get_data
+    @rep = Rep::Client.new.get_data
     @transaction = Transaction.new
   end
 
@@ -20,6 +20,21 @@ class CandidatesController < ApplicationController
   	@candidate.save
   	redirect_to candidates_path(@candidate)
   end
+
+
+  # this function defines an array to hold each of the candidates data,
+  # it then loops through for the number of rows in the table and puts each datapoint into the
+  # an array thats then pushed to the candidates data array
+  # def get_data
+  #   @democrats = []
+  #   for i in 0..3 do
+  #     cand = Array.new
+  #     for x in 0..6 do
+  #       cand.push(doc.search('TR')[i].children.children[x].text)
+  #     end
+  #     @democrats.push(cand)
+  #   end
+  # end
 
   private
 

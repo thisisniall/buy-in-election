@@ -1,0 +1,233 @@
+
+body {
+	/*background-color: #F7F3E8;*/
+	background-color: rgb(227, 227, 220);
+	font-family: 'Lato';
+	margin: 0;
+	margin-top: -16px;
+}
+
+.pietitle {
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.ul li {
+	font-weight: 400;
+	font-size: 14px;
+}
+
+#pie1 {
+	/*margin-left: 5%;*/
+	margin-top: 20px;
+	display: inline-block;
+	
+}
+
+.legendText {
+	z-index: 100;
+}
+
+.legend {
+	vertical-align: top;
+	margin-left: -80%;
+	margin-top: 60px;
+}
+
+#hchart {
+	border-radius: 10px;
+	display: inline-block;
+	margin-left: 3.5%;
+}
+
+#gchart {
+	margin-left: 5%;
+	margin-top: 20px;
+	display: inline-block;
+}
+
+#pie2 {
+	border-radius: 10px;
+	display: inline-block;
+	margin-left: 3.5%;
+}
+
+.pietitle {
+	fill: #2B3E42;
+	font-size: 20px;
+}
+
+#locationName {
+	width: 30%;
+	color: #2B3E42;
+	margin-top: -22%;
+	margin-left: 32.5%;
+	padding: 30px;
+	background-color: rgb(251, 252, 247);
+	border-radius: 10px;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+	z-index: 100;
+	position: absolute;
+	text-align: center;
+}
+
+#map { 
+	width: 100%; 
+	height: 500px;
+}
+
+#header {
+	height: 60px;
+	width: 100%;
+	background-color: #2B3E42;
+}
+
+#header p {
+	color: #ffffff;
+}
+
+.filter_button {
+	padding: 15px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	position: absolute;
+	z-index: 10;
+	margin: 10px;
+	max-width: 46px;
+}
+
+#garden {
+	left: 5px;
+}
+
+#health {
+	left: 60px;
+}
+
+#info {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+#mapInfo {
+	width: 30%;
+	min-width: 300px;
+	max-width: 500px;
+	background-color: rgb(251, 252, 247);
+	border-radius: 10px;
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+	border: 1px solid #024E83;
+}
+
+#selector {
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	background-color: rgb(251, 252, 247);
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+#selector p {
+	font-size: 20px;
+	display: inline;
+	color: #2B3E42;
+}
+
+#locSelect {
+	border: 2px solid #2B3E42;
+	background-color: #ffffff;
+	font-size: 18px;
+	color: #2B3E42;
+}
+
+#select {
+	border: 2px solid #2B3E42;
+	background-color: #ffffff;
+	border-radius: 5px;
+	font-size: 17px;
+	color: #2B3E42;
+}
+
+#graph{	
+	width: 60%;
+	margin-left: 5%;
+	display: inline-block;
+}
+
+#tables{
+	width: 25%;
+	display: inline-block;
+	margin-left: 3%;
+}
+
+.svg {
+	margin: 0 auto;
+	background-color: rgb(251, 252, 247);
+	border-radius: 10px;
+	margin-bottom: 30px;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.svgDiv {
+	height: 550px;
+	width: 30%;
+	float: right;
+	background-color: rgb(251, 252, 247);
+	/*margin-top: 30px;*/
+	border-radius: 10px;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.svgDiv h3 {
+	text-align: center;
+}
+
+.svgDiv h3 p {
+	font-size: 15px;
+	font-weight: 300;
+}
+
+.xaxis path,
+.xaxis line,
+.yaxis path,
+.yaxis line {
+	stroke-width: 3px;
+	fill: none;
+	stroke: #2B3E42;
+	shape-rendering: crispEdges;
+}
+
+.xaxis text,
+.yaxis text {
+	font-family: 'Lato';
+	font-size: 12px;
+	font-weight: 500;
+	fill: #2B3E42;
+}
+
+.center-text {
+	text-align: center;
+}
+
+
+.chartTitle {
+	font-size: 20px;
+	font-weight: 700;
+	fill: #2B3E42;
+}
+
+/*.graphlabel {
+	font-family: 'Roboto';
+}*/
+
+rect {
+	transition: all 0.3s;
+}
+
+rect:hover {
+	fill: #DC4032;
+}
+

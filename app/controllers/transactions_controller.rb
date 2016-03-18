@@ -6,7 +6,7 @@ class TransactionsController < ApplicationController
 	def new
 		@user = current_user
 		@transaction = Transaction.new
-				@candidates = Candidate.all
+		@candidates = Candidate.all
 	end
 
 	def index
@@ -16,8 +16,8 @@ class TransactionsController < ApplicationController
 		@transaction = Transaction.new
 
 		# dem and rep are methods defined in lib/apis/iowa.rb
-		@dem = Iowa::Client.new.dem['results']['collection1']
-		@rep = Iowa::Client.new.rep['results']['collection1']
+		@dem = Dem::Client.new.get_data
+		@rep = Rep::Client.new.get_data
 	end
 	
 	def create
