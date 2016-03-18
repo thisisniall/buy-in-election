@@ -123,13 +123,13 @@
 			<div class="dcandidate">
 				<% @c = @dem[@i] %>
 				<% if @c['Symbol'] == 'CLIN_NOM' %>
-					<h1><%= link_to 'Hillary Clinton', candidate_path(@i), class: 'cand_name' %></h1>
+					<h1><%= link_to 'Hillary Clinton', candidate_path(@i + 1), class: 'cand_name' %></h1>
 					<img src="assets/clinton.jpg" class="candidate_img" />
 				<% elsif @c['Symbol'] == 'SAND_NOM' %>
-					<h1><%= link_to 'Bernie Sanders', candidate_path(@i), class: 'cand_name' %></h1>
+					<h1><%= link_to 'Bernie Sanders', candidate_path(@i + 1), class: 'cand_name' %></h1>
 					<img src="assets/sanders.jpg" class="candidate_img" />
 				<% else %>
-					<h1><%= link_to 'Democratic Rest of Field', candidate_path(@i), class: 'cand_name' %></h1>
+					<h1><%= link_to 'Democratic Rest of Field', candidate_path(@i + 1), class: 'cand_name' %></h1>
 					<img src="assets/democraticlogo.png" class="candidate_img" />
 				<% end %>
 				<h2><%= @c['Symbol'] %></h2>
@@ -146,19 +146,19 @@
 			<div class = 'candidate'>
 				<% @c = @rep[@x] %>
 				<% if @c['Symbol'] == 'CARS_NOM' %>
-					<h1><%= link_to 'Ben Carson', candidate_path(@i), class: 'cand_name' %></h1>
+					<h1><%= link_to 'Ben Carson', candidate_path(@i + 1), class: 'cand_name' %></h1>
 					<img src="assets/carson.jpg" class="candidate_img" />
 				<% elsif @c['Symbol'] == 'CRUZ_NOM' %>
-					<h1><%= link_to 'Ted Cruz', candidate_path(@i), class: 'cand_name' %></h1>
+					<h1><%= link_to 'Ted Cruz', candidate_path(@i + 1), class: 'cand_name' %></h1>
 					<img src="assets/cruz.jpg" class="candidate_img" />
 				<% elsif @c['Symbol'] == 'RUBI_NOM' %>
-					<h1><%= link_to 'Marco Rubio', candidate_path(@i), class: 'cand_name' %></h1>
+					<h1><%= link_to 'Marco Rubio', candidate_path(@i + 1), class: 'cand_name' %></h1>
 					<img src="assets/rubio.jpg" class="candidate_img" />
 				<% elsif @c['Symbol'] == 'TRUM_NOM' %>
-					<h1><%= link_to 'Donald Trump', candidate_path(@i), class: 'cand_name' %></h1>
+					<h1><%= link_to 'Donald Trump', candidate_path(@i + 1), class: 'cand_name' %></h1>
 					<img src="assets/trump.jpg" class="candidate_img" />
 				<% else %>
-					<h1><%= link_to 'Republican Rest of Field', candidate_path(@i), class: 'cand_name' %></h1>
+					<h1><%= link_to 'Republican Rest of Field', candidate_path(@i + 1), class: 'cand_name' %></h1>
 					<img src="assets/republicanlogo.jpg" class="candidate_img" />
 				<% end %>
 				<h2><%= @c['Symbol'] %></h2>

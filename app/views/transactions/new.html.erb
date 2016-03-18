@@ -20,17 +20,12 @@
 
 		<!-- value 1 is hillary -->
 		<% if :candidate_id.value = 1 %>
-			<%= t.number_fiel:shares_clinton 
+			<%= t.number_field:shares_clinton 
 		<% end %>
 		<br>
 		<br>
 		<%= t.submit :class => "button user_input"%>
 	<% end %>
-
-
-
-
-
 </div>
 
 <!-- if shares_clinton != nil

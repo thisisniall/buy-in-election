@@ -13,10 +13,10 @@
 					<img src="/assets/democraticlogo.png" class="candidate_img" />
 					<%= render partial: 'transactions/dem_rof', locals: {user: @user, transaction: @transaction} %>
 				<% end %>
-				<p><span class="bold">Ticker name:</span> <%= @dem[@candidate.id]["candidate"] %></p>
-				<p><span class="bold">Low:</span> <%= @dem[@candidate.id]['low'] %></p>
-				<p><span class="bold">High:</span> <%= @dem[@candidate.id]['high'] %></p>
-				<p><span class="bold">Current Price:</span> <%= @dem[@candidate.id]['average'] %></p>
+				<p><span class="bold">Ticker name:</span> <%= @dem[@candidate.id - 1]['Symbol'] %></p>
+				<p><span class="bold">Low:</span> <%= @dem[@candidate.id - 1]['Low'] %></p>
+				<p><span class="bold">High:</span> <%= @dem[@candidate.id - 1]['High'] %></p>
+				<p><span class="bold">Current Price:</span> <%= @dem[@candidate.id - 1]['Average'] %></p>
 				<p><span class="bold">Total Shares:</span> <%= @candidate.total_shares %></p>
 			</div>
 		<% else %>
@@ -38,10 +38,10 @@
 					<img src="/assets/republicanlogo.jpg" class="candidate_img" />
 					<%= render partial:  'transactions/rep_rof', locals: {user: @user, transaction: @transaction} %>
 				<% end %>
-				<p><span class="bold">Ticker name:</span> <%= @rep[@candidate.id - 3]["candidate"] %></p>
-				<p><span class="bold">Low:</span> <%= @rep[@candidate.id - 3]['low'] %></p>
-				<p><span class="bold">High:</span> <%= @rep[@candidate.id - 3]['high'] %></p>
-				<p><span class="bold">Current Price:</span> <%= @rep[@candidate.id - 3]['average'] %></p>
+				<p><span class="bold">Ticker name:</span> <%= @rep[@candidate.id - 4]["Symbol"] %></p>
+				<p><span class="bold">Low:</span> <%= @rep[@candidate.id - 4]['Low'] %></p>
+				<p><span class="bold">High:</span> <%= @rep[@candidate.id - 4]['High'] %></p>
+				<p><span class="bold">Current Price:</span> <%= @rep[@candidate.id - 4]['Average'] %></p>
 				<p><span class="bold">Total Shares:</span> <%= @candidate.total_shares %></p>
 			</div>
 		<% end %>
