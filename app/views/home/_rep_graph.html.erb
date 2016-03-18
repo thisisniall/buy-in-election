@@ -87,7 +87,7 @@
 			.enter()
 			.append("text")
 	    	.attr("x", function(d, i) { return i * (590 / data.length) })
-	    	.attr("y", function(d) { return 270 - (d * 250); })
+	    	.attr("y", function(d) { d * 2 })
 	    	.attr("dy", ".75em")
 	    	.text(function(d) { return d; })
 	    	.attr('transform', 'translate(120, 40)')

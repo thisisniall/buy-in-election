@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  candidate: MyString
+  units: 1
+  volume: 9.99
+  low: 9.99
+  high: 9.99
+  average: 9.99
+  last: 9.99
+
+two:
+  candidate: MyString
+  units: 1
+  volume: 9.99
+  low: 9.99
+  high: 9.99
+  average: 9.99
+  last: 9.99

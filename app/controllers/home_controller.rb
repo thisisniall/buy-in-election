@@ -5,42 +5,43 @@ class HomeController < ApplicationController
       @candidate = Candidate.find_by(id: @i)
       @user = current_user
       	# dem is an array of democratic primary results returned from Iowa markets
-      	@dem = Iowa::Client.new.dem['results']['collection1']
+      	# @dem = Iowa::Client.new.dem['results']['collection1']
+        @dem = Dem::Client.new.get_data
       	# i stands in for the position in the array
-      	@i = 1
+      	@i = 0
       	# dem_array_length is the length of the dem array
       	@dem_array_length = @dem.length
 
         # need to define these for the data array used in the graphs
-        @clin = @dem[1]['average'].to_f
-        @sand = @dem[2]['average'].to_f
-        @dem_rof = @dem[3]['average'].to_f
+        @clin = @dem[0]['Average'].to_f
+        @sand = @dem[1]['Average'].to_f
+        @dem_rof = @dem[2]['Average'].to_f
 
         # need to define these for the backup data array used in the graphs
-        @clinL = @dem[1]['last'].to_f
-        @sandL = @dem[2]['last'].to_f
-        @dem_rofL = @dem[3]['last'].to_f
+        @clinL = @dem[0]['Last'].to_f
+        @sandL = @dem[1]['Last'].to_f
+        @dem_rofL = @dem[2]['Last'].to_f
         
       	
       	# rep is an array of republican primary results returned from Iowa markets
-      	@rep = Iowa::Client.new.rep['results']['collection1']
+      	@rep = Rep::Client.new.get_data
       	# i stands in for the position in the array
-      	@x = 1
+      	@x = 0
       	# dem_array_lsength is the length of the rep array minus 1
       	@rep_array_length = @rep.length
       	@z = 0
 
-        @car = @rep[1]['average'].to_f
-        @cruz = @rep[2]['average'].to_f
-        @rub = @rep[3]['average'].to_f
-        @trump = @rep[4]['average'].to_f
-        @rep_rof = @rep[5]['average'].to_f
+        @car = @rep[0]['Average'].to_f
+        @cruz = @rep[1]['Average'].to_f
+        @rub = @rep[2]['Average'].to_f
+        @trump = @rep[3]['Average'].to_f
+        @rep_rof = @rep[4]['Average'].to_f
 
-        @carL = @rep[1]['last'].to_f
-        @cruzL = @rep[2]['last'].to_f
-        @rubL = @rep[3]['last'].to_f
-        @trumpL = @rep[4]['last'].to_f
-        @rep_rofL = @rep[5]['last'].to_f
+        @carL = @rep[0]['Last'].to_f
+        @cruzL = @rep[1]['Last'].to_f
+        @rubL = @rep[2]['Last'].to_f
+        @trumpL = @rep[3]['Last'].to_f
+        @rep_rofL = @rep[4]['Last'].to_f
       else
         redirect_to log_in_path
       end

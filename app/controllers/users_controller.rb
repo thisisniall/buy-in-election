@@ -16,16 +16,16 @@ class UsersController < ApplicationController
 	def edit
 		@user = User.find(params[:id])
 		# dem is an array of democratic primary results returned from Iowa markets
-      	@dem = Iowa::Client.new.dem['results']['collection1']
+      	@dem = Dem::Client.new.get_data
       	# i stands in for the position in the array
-      	@i = 1
+      	@i = 0
       	# dem_array_length is the length of the dem array minus 1
       	@dem_array_length = @dem.length - 1
       	
       	# rep is an array of republican primary results returned from Iowa markets
-      	@rep = Iowa::Client.new.rep['results']['collection1']
+      	@rep = Rep::Client.new.get_data
       	# i stands in for the position in the array
-      	@x = 1
+      	@x = 0
       	# dem_array_length is the length of the rep array minus 1
       	@rep_array_length = @rep.length - 1
       	@z = 0
@@ -56,42 +56,42 @@ class UsersController < ApplicationController
 		# @max = @dataArray.max
 	
 		# dem is an array of democratic primary results returned from Iowa markets
-      	@dem = Iowa::Client.new.dem['results']['collection1']
+      	@dem = Dem::Client.new.get_data
       	# i stands in for the position in the array
-      	@i = 1
+      	@i = 0
       	# dem_array_length is the length of the dem array
-      	@dem_array_length = @dem.length
+      	@dem_array_length = @dem.length - 1
 
         # need to define these for the data array used in the graphs
-        @clinA = @dem[1]['average'].to_f
-        @sandA = @dem[2]['average'].to_f
-        @dem_rofA = @dem[3]['average'].to_f
+        @clinA = @dem[0]['Average'].to_f
+        @sandA = @dem[1]['Average'].to_f
+        @dem_rofA = @dem[2]['Average'].to_f
 
         # need to define these for the backup data array used in the graphs
-        @clinL = @dem[1]['last'].to_f
-        @sandL = @dem[2]['last'].to_f
-        @dem_rofL = @dem[3]['last'].to_f
+        @clinL = @dem[0]['Last'].to_f
+        @sandL = @dem[1]['Last'].to_f
+        @dem_rofL = @dem[2]['Last'].to_f
         
       	
       	# rep is an array of republican primary results returned from Iowa markets
-      	@rep = Iowa::Client.new.rep['results']['collection1']
+      	@rep = Rep::Client.new.get_data
       	# i stands in for the position in the array
-      	@x = 1
+      	@x = 0
       	# dem_array_length is the length of the rep array minus 1
-      	@rep_array_length = @rep.length
-      	@z = 0
+      	@rep_array_length = @rep.length - 1
+      	@z = 1
 
-        @carA = @rep[1]['average'].to_f
-        @cruzA = @rep[2]['average'].to_f
-        @rubA = @rep[3]['average'].to_f
-        @trumpA = @rep[4]['average'].to_f
-        @rep_rofA = @rep[5]['average'].to_f
+        @carA = @rep[0]['Average'].to_f
+        @cruzA = @rep[1]['Average'].to_f
+        @rubA = @rep[2]['Average'].to_f
+        @trumpA = @rep[3]['Average'].to_f
+        @rep_rofA = @rep[4]['Average'].to_f
 
-        @carL = @rep[1]['last'].to_f
-        @cruzL = @rep[2]['last'].to_f
-        @rubL = @rep[3]['last'].to_f
-        @trumpL = @rep[4]['last'].to_f
-        @rep_rofL = @rep[5]['last'].to_f
+        @carL = @rep[0]['Last'].to_f
+        @cruzL = @rep[1]['Last'].to_f
+        @rubL = @rep[2]['Last'].to_f
+        @trumpL = @rep[3]['Last'].to_f
+        @rep_rofL = @rep[4]['Last'].to_f
 	end
 
 	def index

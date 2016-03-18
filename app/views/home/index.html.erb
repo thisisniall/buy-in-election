@@ -25,6 +25,7 @@
 			.attr("width", width)
 			.attr("height", height);
 
+		// creates the title for the graph
 		svgContainer.append("text")
 			.attr("class", "title")
 			.attr("x", (width / 2))
@@ -33,8 +34,10 @@
 			.style("text-anchor", "middle")
 			.text("Overall Race")
 
+		// creates an array of variables that refers back to the current averge prices of the candidates for use in the graph
 		var data = [<%= @clin %>, <%= @sand %>, <%= @dem_rof %>, <%= @car %>, <%= @cruz %>, <%= @rub %>, <%= @trump %>, <%= @rep_rof %>]
 
+		// creates an array of variables that refers back to the last reported prices for the candidates, to be used if the current data isn't displaying
 		var lastdata = [<%= @clinL %>, <%= @sandL %>, <%= @dem_rofL %>, <%= @carL %>, <%= @cruzL %>, <%= @rubL %>, <%= @trumpL %>, <%= @rep_rofL %>]
 		
 		// creates the scale that the graph is going to use for the x axis
@@ -66,7 +69,8 @@
 			.attr("transform", "translate(35, 75)")
 			.call(yAxis);
 
-		var barWidth = 700 / data.length;
+
+		// creates groups for each of the bars and labels to go inside
 
 		var bar = svgContainer.selectAll('g')
 		<% if @clin || @sand || @dem_rof || @car || @cruz || @rub || @trump || @rep_rof == '---' %>
@@ -118,19 +122,19 @@
 		<% while @i < @dem_array_length do %>
 			<div class="dcandidate">
 				<% @c = @dem[@i] %>
-				<% if @c['candidate'] == 'CLIN_NOM' %>
+				<% if @c['Symbol'] == 'CLIN_NOM' %>
 					<h1><%= link_to 'Hillary Clinton', candidate_path(@i), class: 'cand_name' %></h1>
 					<img src="assets/clinton.jpg" class="candidate_img" />
-				<% elsif @c['candidate'] == 'SAND_NOM' %>
+				<% elsif @c['Symbol'] == 'SAND_NOM' %>
 					<h1><%= link_to 'Bernie Sanders', candidate_path(@i), class: 'cand_name' %></h1>
 					<img src="assets/sanders.jpg" class="candidate_img" />
 				<% else %>
 					<h1><%= link_to 'Democratic Rest of Field', candidate_path(@i), class: 'cand_name' %></h1>
 					<img src="assets/democraticlogo.png" class="candidate_img" />
 				<% end %>
-				<h2><%= @c['candidate'] %></h2>
-				<p>average: <%= @c['average'] %></p>
-				<p>last: <%= @c['last'] %></p>
+				<h2><%= @c['Symbol'] %></h2>
+				<p>average: <%= @c['Average'] %></p>
+				<p>last: <%= @c['Last'] %></p>
 			</div>
 			<% @i += 1 %>
 		<% end %>
@@ -141,25 +145,25 @@
 		<% while @x < @rep_array_length do %>
 			<div class = 'candidate'>
 				<% @c = @rep[@x] %>
-				<% if @c['candidate'] == 'CARS_NOM' %>
+				<% if @c['Symbol'] == 'CARS_NOM' %>
 					<h1><%= link_to 'Ben Carson', candidate_path(@i), class: 'cand_name' %></h1>
 					<img src="assets/carson.jpg" class="candidate_img" />
-				<% elsif @c['candidate'] == 'CRUZ_NOM' %>
+				<% elsif @c['Symbol'] == 'CRUZ_NOM' %>
 					<h1><%= link_to 'Ted Cruz', candidate_path(@i), class: 'cand_name' %></h1>
 					<img src="assets/cruz.jpg" class="candidate_img" />
-				<% elsif @c['candidate'] == 'RUBI_NOM' %>
+				<% elsif @c['Symbol'] == 'RUBI_NOM' %>
 					<h1><%= link_to 'Marco Rubio', candidate_path(@i), class: 'cand_name' %></h1>
 					<img src="assets/rubio.jpg" class="candidate_img" />
-				<% elsif @c['candidate'] == 'TRUM_NOM' %>
+				<% elsif @c['Symbol'] == 'TRUM_NOM' %>
 					<h1><%= link_to 'Donald Trump', candidate_path(@i), class: 'cand_name' %></h1>
 					<img src="assets/trump.jpg" class="candidate_img" />
 				<% else %>
 					<h1><%= link_to 'Republican Rest of Field', candidate_path(@i), class: 'cand_name' %></h1>
 					<img src="assets/republicanlogo.jpg" class="candidate_img" />
 				<% end %>
-				<h2><%= @c['candidate'] %></h2>
-				<p>average: <%= @c['average'] %></p>
-				<p>last: <%= @c['last'] %></p>
+				<h2><%= @c['Symbol'] %></h2>
+				<p>average: <%= @c['Average'] %></p>
+				<p>last: <%= @c['Last'] %></p>
 			</div>
 			<% @x += 1 %>
 			<% @i += 1 %>
