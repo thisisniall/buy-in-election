@@ -1,21 +1,20 @@
 <div id = 'page'>
 	<div id="above_the_fold">
 		<div class="dsplash_image">
-			<img src="assets/dems.png" />
+			<%= image_tag("dems.png") %>
 		</div>
 		<div class="duser_graph">
 			<%= render partial: 'dem_graph', local: {user: @user} %>
 		</div>
 		<div class="ruser_graph">
 			<%= render partial: 'rep_graph', local: {user: @user} %>
-			<!-- <img src="assets/RCONV16_graph.png" /> -->
 		</div>
 		<div class="rsplash_image">
-			<img src="assets/reps.jpg" />
+			<%= image_tag("reps.jpg") %>
 		</div>
 	</div>
 	<div class="graph"></div>
-	<script type="text/javascript" src ="assets/d3.min.js"></script>
+	<script src="https://d3js.org/d3.v3.js"></script>
 	<script type="text/javascript">
 		// creates the svg viewport selection, where the graph is going to live and be buit
 		var width = 645
@@ -124,13 +123,13 @@
 				<% @c = @dem[@i] %>
 				<% if @c['Symbol'] == 'CLIN_NOM' %>
 					<h1><%= link_to 'Hillary Clinton', candidate_path(@i + 1), class: 'cand_name' %></h1>
-					<img src="assets/clinton.jpg" class="candidate_img" />
+					<%= image_tag("clinton.jpg", class: "candidate_img") %>
 				<% elsif @c['Symbol'] == 'SAND_NOM' %>
 					<h1><%= link_to 'Bernie Sanders', candidate_path(@i + 1), class: 'cand_name' %></h1>
-					<img src="assets/sanders.jpg" class="candidate_img" />
+					<%= image_tag("sanders.jpg", class: "candidate_img") %>
 				<% else %>
 					<h1><%= link_to 'Democratic Rest of Field', candidate_path(@i + 1), class: 'cand_name' %></h1>
-					<img src="assets/democraticlogo.png" class="candidate_img" />
+					<%= image_tag("democraticlogo.png", class: "candidate_img") %>
 				<% end %>
 				<h2><%= @c['Symbol'] %></h2>
 				<p>average: <%= @c['Average'] %></p>
@@ -147,19 +146,19 @@
 				<% @c = @rep[@x] %>
 				<% if @c['Symbol'] == 'CARS_NOM' %>
 					<h1><%= link_to 'Ben Carson', candidate_path(@i + 1), class: 'cand_name' %></h1>
-					<img src="assets/carson.jpg" class="candidate_img" />
+					<%= image_tag("carson.jpg", class: "candidate_img") %>
 				<% elsif @c['Symbol'] == 'CRUZ_NOM' %>
 					<h1><%= link_to 'Ted Cruz', candidate_path(@i + 1), class: 'cand_name' %></h1>
-					<img src="assets/cruz.jpg" class="candidate_img" />
+					<%= image_tag("cruz.jpg", class: "candidate_img") %>
 				<% elsif @c['Symbol'] == 'RUBI_NOM' %>
 					<h1><%= link_to 'Marco Rubio', candidate_path(@i + 1), class: 'cand_name' %></h1>
-					<img src="assets/rubio.jpg" class="candidate_img" />
+					<%= image_tag("rubio.jpg", class: "candidate_img") %>
 				<% elsif @c['Symbol'] == 'TRUM_NOM' %>
 					<h1><%= link_to 'Donald Trump', candidate_path(@i + 1), class: 'cand_name' %></h1>
-					<img src="assets/trump.jpg" class="candidate_img" />
+					<%= image_tag("trump.jpg", class: "candidate_img") %>
 				<% else %>
 					<h1><%= link_to 'Republican Rest of Field', candidate_path(@i + 1), class: 'cand_name' %></h1>
-					<img src="assets/republicanlogo.jpg" class="candidate_img" />
+					<%= image_tag("republicanlogo.jpg", class: "candidate_img") %>
 				<% end %>
 				<h2><%= @c['Symbol'] %></h2>
 				<p>average: <%= @c['Average'] %></p>

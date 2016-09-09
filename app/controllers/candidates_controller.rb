@@ -4,8 +4,8 @@ class CandidatesController < ApplicationController
   end
 
   def show
-    @candidate = Candidate.find(params[:id])
     @user = current_user
+    @candidate = Candidate.find(params[:id])
     @dem = Candidate.d_get_data
     @rep = Candidate.r_get_data
     @transaction = Transaction.new

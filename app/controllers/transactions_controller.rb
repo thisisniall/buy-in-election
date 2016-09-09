@@ -16,8 +16,8 @@ class TransactionsController < ApplicationController
 		@transaction = Transaction.new
 
 		# dem and rep are methods defined in lib/apis/iowa.rb
-		@dem = Dem::Client.new.get_data
-		@rep = Rep::Client.new.get_data
+		@dem = Candidate.d_get_data
+		@rep = Candidate.r_get_data
 	end
 	
 	def create

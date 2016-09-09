@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211045502) do
+ActiveRecord::Schema.define(version: 20160217154739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,19 +63,8 @@ ActiveRecord::Schema.define(version: 20160211045502) do
   add_index "transactions", ["user_id"], name: "index_transactions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
+    t.string   "username"
     t.string   "email"
-    t.string   "fname"
-    t.string   "lname"
-    t.integer  "party"
-    t.decimal  "money"
-    t.integer  "shares_clinton"
-    t.integer  "shares_sanders"
-    t.integer  "shares_dem_rof"
-    t.integer  "shares_carson"
-    t.integer  "shares_cruz"
-    t.integer  "shares_rubio"
-    t.integer  "shares_trump"
-    t.integer  "shares_rep_rof"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
